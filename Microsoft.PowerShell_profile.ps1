@@ -1,4 +1,4 @@
-Last updated: 2017-04-24 00:54:49
+Last updated: 2017-04-24 01:11:34
 ﻿#. (Resolve-Path "$env:LOCALAPPDATA\GitHub\shell.ps1")
 #. $env:github_posh_git\profile.example.ps1
 
