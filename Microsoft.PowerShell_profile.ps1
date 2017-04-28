@@ -1,8 +1,10 @@
-Last updated: 2017-04-24 01:11:34
-﻿#. (Resolve-Path "$env:LOCALAPPDATA\GitHub\shell.ps1")
-#. $env:github_posh_git\profile.example.ps1
-
+Last updated: 2017-04-28 22:51:46
+﻿Clear-Host
 set-alias vim "C:\Program Files (x86)\Vim\vim80\gvim.exe"
+set-alias g "git"
+
+# Welcome message
+"Welcome to PowerShell: " + $env:Username
 
 Function GitHubLocation
 {
@@ -12,7 +14,7 @@ set-alias gogit GitHubLocation
 
 Function GitBackupLocation
 {
-cd '~\OneDrive\W10-OneDrive\Java programozás OneDrive\Src_Backup_Clones\JavaLearningBackup'
+cd '~\OneDrive\W10-OneDrive\Java programozás OneDrive\Src_Backup_Clones\'
 }
 set-alias gogitbackup GitBackupLocation
 
