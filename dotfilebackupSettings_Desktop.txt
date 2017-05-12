@@ -1,4 +1,4 @@
-Last updated: 2017-04-25 23:17:17
+Last updated: 2017-05-12 22:24:12
 >>_vimrc
 C:\Users\olaha\_vimrc
 E:\GitHub\mydotfiles\_vimrc
@@ -15,3 +15,7 @@ E:\GitHub\mydotfiles\Microsoft.PowerShell_profile.ps1
 C:\Users\olaha\dotfilebackupSettings.txt
 E:\GitHub\mydotfiles\dotfilebackupSettings_Desktop.txt
 <<End dotfilebackupSettings
+>>Eclipse VIM binding's _vrapperrc
+C:\Users\olaha\_vrapperrc
+E:\GitHub\mydotfiles\_vrapperrc
+<<End vrapperrc

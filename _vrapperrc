@@ -1,0 +1,25 @@
+Last updated: 2017-05-12 22:24:12
+imap jk <esc>
+map <c-h> gT
+map <c-l> gt
+map H ^
+map L $
+set autoindent
+set ignorecase
+set smartcase
+set gvimpath="C:\Program Files (x86)\Vim\vim80\gvim.exe"
+let mapleader=','
+map <leader>f :f<cr>
+
+"http://help.eclipse.org/kepler/index.jsp?topic=%2Forg.eclipse.jdt.doc.isv%2Freference%2Fapi%2Forg%2Feclipse%2Fjdt%2Fui%2Factions%2FIJavaEditorActionDefinitionIds.html
+"show refactor menu
+"https://github.com/justinmk/config/blob/master/.vrapperrc
+eclipseaction eclipserefactormenu org.eclipse.jdt.ui.edit.text.java.refactor.quickMenu
+nnoremap rfm        :eclipserefactormenu<cr>
+vnoremap <c-r><c-r> :eclipserefactormenu<cr>gv
+
+eclipseaction eclipserefactormenu org.eclipse.jdt.ui.edit.text.java.refactor
+eclipseaction eclipserenameelement org.eclipse.jdt.ui.edit.text.java.rename.element
+nnoremap rfr        :eclipserenameelement<cr>
+vnoremap <c-r><c-r> :eclipserenameelement<cr>gv
+

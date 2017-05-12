@@ -1,7 +1,6 @@
-Last updated: 2017-04-24 01:11:34
-"vimrc PowerShell beállítások v2.1 2017-04-21
+Last updated: 2017-04-30 10:15:17
 "============================================================================================================
-"~~	MAPLEADER BEÁLLÍTÁSOK ~~
+"~~	MAPLEADER Settings ~~
 "============================================================================================================
 	let mapleader=","
 	"Toggle Nerdtree file manager with ,n 
@@ -13,9 +12,7 @@ Last updated: 2017-04-24 01:11:34
 	":diffupdate
 	map <leader>du :diffupdate<cr>
 "============================================================================================================
-"
-"============================================================================================================
-"~~	Pluginek
+"~~	Plugins
 "============================================================================================================
 	"Pathogen
 	execute pathogen#infect()
@@ -30,8 +27,7 @@ Last updated: 2017-04-24 01:11:34
 	let g:ctrlp_cmd = 'CtrlPMRU'
 	"http://ctrlpvim.github.io/ctrlp.vim/#installation"
 "============================================================================================================
-"============================================================================================================
-"~~	Gyári beállítások ~~
+"~~	Default settings ~~
 "============================================================================================================
 	"a ctrl-V átmappolása mielőtt az mswin.vim a rendszerszintű paste-t rakja be helyette
 	map <leader>v <c-q>
@@ -94,7 +90,7 @@ Last updated: 2017-04-24 01:11:34
 	"  silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
 	"endfunction
 "============================================================================================================
-"~~	WILDMENU beállítások ~~
+"~~	WILDMENU settings ~~
 "============================================================================================================
 	"Ha van lehetőség, akkor menüben mutatja meg a TAB utáni autocomplete lehetőségeket
 		set wildmenu 
@@ -103,7 +99,7 @@ Last updated: 2017-04-24 01:11:34
 		"Vessző után a full pedig a második tabra már teljesen kiegészíti
 		set wildmode=list:longest,full
 "============================================================================================================
-"~~	FILE, BACKUP, MAPPA BEÁLLÍTÁSOK	 ~~
+"~~	FILE, BACKUP, MAPPA settings	 ~~
 "============================================================================================================
 	"Ide rakja a backupot, .un file-t és swap file-t pedig ne csináljon
 		set nobackup
@@ -122,7 +118,7 @@ Last updated: 2017-04-24 01:11:34
 		set autoread
 		set autowrite
 "============================================================================================================
-"~~	KERESÉSI és SUBSTITUTE BEÁLLÍTÁSOK ~~
+"~~	KERESÉSI és SUBSTITUTE settings ~~
 "============================================================================================================
 	"Substitute kezdése egyszerűbben, automatikusan kieszképelve minden regexet
 		nnoremap <leader>s :%s,\v
@@ -147,7 +143,7 @@ Last updated: 2017-04-24 01:11:34
 		nnoremap g; g,zz
 		nnoremap g, g;zz
 "============================================================================================================
-"~~	GUI beállítások ~~
+"~~	GUI settings ~~
 "============================================================================================================
 	"Kikapcsolja az idegesítő csipogást és villogást
 		set vb t_vb=
@@ -333,26 +329,25 @@ Last updated: 2017-04-24 01:11:34
 "============================================================================================================
 "~~	FOLD beállítások
 "============================================================================================================
-	" foldmethodot indentre
+	" Sets foldmethod to indent
 		nnoremap <leader>fi :set foldmethod=indent<cr>
-	" foldmethod manualra
+	" Sets foldmethod to manualj
 		nnoremap <leader>fm :set foldmethod=manual<cr>
 	" always show folds
 		set foldcolumn=1
-	" az egysoros behúzott sorokat is foldolja
-		"set foldminlines=0
+	" Display folds with one rows 
+		set foldminlines=0
 "============================================================================================================
-"~~	SHELL BEÁLLíTÁSOK	 ~~
+"~~	SHELL Settings	 ~~
 "============================================================================================================
-	"Mindig a PowerShell legyen a shell
+	"Set Powrshell as default shell
 	"Removed this option, because vimdiff did not work well in powershell
 		"set shell=powershell
 		"set shell=%SystemRoot%\syswow64\WindowsPowerShell\v1.0\powershell.exe
-	"Ez mgé nem teljesen egyértelmű, mit csinál, de biztos jó lesz
-	"set shellcmdflag=-Command
-	"Help ehhez:
+		"set shellcmdflag=-Command
+	"Source
 		"http://juliankay.com/development/setting-up-vim-to-work-with-powershell/
 "============================================================================================================
-"~~	GÉPSPECIFIKUS BEÁLLÍTÁSOK ~~
+"~~	Computer specific settings ~~
 "============================================================================================================
 	"set viewdir=d:\Dropbox\VIMDropbox\viewdir\
