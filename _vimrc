@@ -1,4 +1,4 @@
-Last updated: 2017-04-30 10:15:17
+Last updated: 2017-06-21 22:14:58
 "============================================================================================================
 "~~	MAPLEADER Settings ~~
 "============================================================================================================
@@ -310,7 +310,7 @@ Last updated: 2017-04-30 10:15:17
 	"Start Gvim maximized
 	au GUIEnter * simalt ~m
 	" to start commands with ; --- not sure if I will like this
-	nnoremap ; :
+	"nnoremap ; :
 	"Ez a helpben fontos, eredetilega  CTRL-G az az aktulis fájl infoit mutatja.
 		noremap <C-g> <C-]>
 	"Timestamp beállítások

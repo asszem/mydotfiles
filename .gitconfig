@@ -1,4 +1,4 @@
-Last updated: 2017-04-25 23:06:11
+Last updated: 2017-06-21 22:14:58
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
@@ -37,3 +37,6 @@ Last updated: 2017-04-25 23:06:11
 [digg]
 	guitool = gvimdiff
 
+[merge]
+	tool = gvimdiff
+	conflictstyle = diff3
