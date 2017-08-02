@@ -1,4 +1,4 @@
-Last updated: 2017-06-21 22:14:58
+Last updated: 2017-08-02 07:54:31
 "============================================================================================================
 "~~	MAPLEADER Settings ~~
 "============================================================================================================
@@ -299,11 +299,42 @@ Last updated: 2017-06-21 22:14:58
 	"Minden nyitott buffert elment 
 		"map <F5> :wa! <bar> mkview <cr>
 		map <F5> :wa!<cr>
-	"Minden tabot elment egy "sessionsave" nevű file-ba.
-		"map <F6> :mksession! c:\vimroot\sessionsave<cr>
-		"map <F9> :so c:\vimroot\sessionsave <cr>
 	"Azoknak a soroknak kiírása global-al, amelyekben benne van a dupla ~ jel
 		map <F10> :g/\~\~<cr>
+	"Minden tabot elment egy "sessionsave" nevű file-ba.
+		map <F6> :mksession! $HOME\vimfiles\sessions\sessionmanualsave.vim<cr>
+		map <F9> :so $HOME\vimfiles\sessions\sessionmanualsave.vim<cr>
+
+"============================================================================================================
+"~~	SESSION Settings ~~
+"============================================================================================================
+	"Function to save a session file to the specified folder
+	function! MakeSession()
+	  let b:sessiondir = $HOME . "\\vimfiles\\sessions" 
+	  ". getcwd()
+	  if (filewritable(b:sessiondir) != 2)
+		exe 'silent !mkdir -p ' b:sessiondir
+		redraw!
+	  endif
+	  let b:filename = b:sessiondir . '\\session.vim'
+	  exe "mksession! " . b:filename
+	endfunction
+
+	"Function to load a session file from the specified folder
+	function! LoadSession()
+	  let b:sessiondir = $HOME . "\\vimfiles\\sessions"
+	  ". getcwd()
+	  let b:sessionfile = b:sessiondir . "\\session.vim"
+	  if (filereadable(b:sessionfile))
+		exe 'source ' b:sessionfile
+	  else
+		echo "No session loaded."
+	  endif
+	endfunction
+
+	" Adding automatons for when entering or leaving Vim
+	au VimEnter * nested :call LoadSession()
+	au VimLeave * :call MakeSession()
 "============================================================================================================
 "~~	EGYÉB BEÁLLÍTÁSOK ~~
 "============================================================================================================
