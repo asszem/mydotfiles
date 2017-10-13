@@ -1,4 +1,4 @@
-Last updated: 2017-08-02 07:54:31
+Last updated: 2017-10-14 01:05:20
 "============================================================================================================
 "~~	MAPLEADER Settings ~~
 "============================================================================================================
@@ -302,8 +302,10 @@ Last updated: 2017-08-02 07:54:31
 	"Azoknak a soroknak kiírása global-al, amelyekben benne van a dupla ~ jel
 		map <F10> :g/\~\~<cr>
 	"Minden tabot elment egy "sessionsave" nevű file-ba.
-		map <F6> :mksession! $HOME\vimfiles\sessions\sessionmanualsave.vim<cr>
-		map <F9> :so $HOME\vimfiles\sessions\sessionmanualsave.vim<cr>
+		map <F6> :mksession! $HOME\vimfiles\sessions\session.vim<cr>
+		map <F9> :so $HOME\vimfiles\sessions\session.vim<cr>
+	"Opens a new tab
+		map <F10> :tabnew<cr>
 
 "============================================================================================================
 "~~	SESSION Settings ~~
@@ -333,7 +335,7 @@ Last updated: 2017-08-02 07:54:31
 	endfunction
 
 	" Adding automatons for when entering or leaving Vim
-	au VimEnter * nested :call LoadSession()
+	"au VimEnter * nested :call LoadSession()
 	au VimLeave * :call MakeSession()
 "============================================================================================================
 "~~	EGYÉB BEÁLLÍTÁSOK ~~
