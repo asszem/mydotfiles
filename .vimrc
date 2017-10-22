@@ -1,5 +1,6 @@
-"Last updated: 2017-08-12 07:54:31
+"Last updated: 2017-10-22
 "This vimrc is updated for Linux.
+"The .vimrc file in ~ is a symbolic link to the original file in the mydotfiles github folder
 "============================================================================================================
 "~~	MAPLEADER Settings ~~
 "============================================================================================================
