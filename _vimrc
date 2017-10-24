@@ -1,5 +1,5 @@
-"Last updated: 2017-10-23 
-"Symlink created in Windows
+"Last updated: 2017-10-24
+"Merged home-work settings
 "============================================================================================================
 "~~	MAPLEADER Settings ~~
 "============================================================================================================
@@ -12,6 +12,15 @@
 	map <leader>j :jumps<cr>
 	":diffupdate
 	map <leader>du :diffupdate<cr>
+	
+""============================================================================================================
+""~~	CFSW Specific Settings ~~
+""============================================================================================================
+	"Find FS/TS or FM/TM that was preceeded by exactly 38 any chars and followed by a whitespace - SVC and MVM flags on RT67, position 40
+	map <leader>svc /^.\{38}[FT][MS]\s<cr>	
+	map <F11> :tabnew ~\Box Sync\CFSW\CFSW Text Notes.txt<cr>
+	
+
 "============================================================================================================
 "~~	Plugins
 "============================================================================================================
@@ -66,30 +75,6 @@
  	endfunction
 
 
-	"set diffexpr=MyDiff()
-	"function MyDiff()
-	"  let opt = '-a --binary '
-	"  if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
-	"  if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
-	"  let arg1 = v:fname_in
-	"  if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
-	"  let arg2 = v:fname_new
-	"  if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
-	"  let arg3 = v:fname_out
-	"  if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
-	"  let eq = ''
-	"  if $VIMRUNTIME =~ ' '
-	"    if &sh =~ '\<cmd'
-	"      let cmd = '""' . $VIMRUNTIME . '\diff"'
-	"      let eq = '"'
-	"    else
-	"      let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
-	"    endif
-	"  else
-	"    let cmd = $VIMRUNTIME . '\diff'
-	"  endif
-	"  silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
-	"endfunction
 "============================================================================================================
 "~~	WILDMENU settings ~~
 "============================================================================================================
@@ -143,6 +128,8 @@
 	" Valamint felcseréli az előre-hátra haladást, az előző változtatás lesz a g,
 		nnoremap g; g,zz
 		nnoremap g, g;zz
+	"map to search the visually selected text
+		vnoremap // y/<C-R>"<CR>
 "============================================================================================================
 "~~	GUI settings ~~
 "============================================================================================================
@@ -381,7 +368,3 @@
 		"set shellcmdflag=-Command
 	"Source
 		"http://juliankay.com/development/setting-up-vim-to-work-with-powershell/
-"============================================================================================================
-"~~	Computer specific settings ~~
-"============================================================================================================
-	"set viewdir=d:\Dropbox\VIMDropbox\viewdir\
