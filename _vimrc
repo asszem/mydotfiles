@@ -1,5 +1,5 @@
-"Last updated: 2017-10-24
-"Merged home-work settings
+"Last updated: 2017-11-17
+"Commented out automatic saving when losing focus, set guifont=consolas added
 "============================================================================================================
 "~~	MAPLEADER Settings ~~
 "============================================================================================================
@@ -85,7 +85,7 @@
 		"Vessző után a full pedig a második tabra már teljesen kiegészíti
 		set wildmode=list:longest,full
 "============================================================================================================
-"~~	FILE, BACKUP, MAPPA settings	 ~~
+"~~	FILE, BACKUP, MAPPA, Encoding settings	 ~~
 "============================================================================================================
 	"Ide rakja a backupot, .un file-t és swap file-t pedig ne csináljon
 		set nobackup
@@ -98,6 +98,8 @@
 		noremap <leader>cdoff :set noautochdir<cr>
 	"Karakterkódolás beállítása
 		set encoding=utf-8
+	"To display proper accented characters in UTF-8 encoding
+		set guifont=Consolas
 	"Az aktuális fájl mappátját állítja be PWD-nek
 	  	nnoremap <Leader>cd :cd %:h<bar>pwd<cr>
 	" Reload file if it's modified outside
@@ -264,7 +266,7 @@
 		nnoremap <S-C-up> 5<c-w>+
 		nnoremap <S-C-down> 5<c-w>-
 	"Minden ablakváltáskor ment egyet.
-		au FocusLost * :wa 
+		"au FocusLost * :wa 
 	"Mindig mentse az aktuális view-t a fájlhoz -> kikapcsoltam, mert sok hibát dobott.
 		"au BufWinLeave * mkview
 		"au BufWinEnter * silent loadview
