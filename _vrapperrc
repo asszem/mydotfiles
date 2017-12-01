@@ -1,4 +1,3 @@
-Last updated: 2017-05-12 22:24:12
 imap jk <esc>
 map <c-h> gT
 map <c-l> gt
@@ -8,7 +7,19 @@ set autoindent
 set ignorecase
 set smartcase
 set gvimpath="C:\Program Files (x86)\Vim\vim80\gvim.exe"
+set contentassistmode
+
 let mapleader=','
+
+" go to Previous/Next Edit location - CTRL-Q in Eclipse
+map <leader>pe g;
+map <leader>ne g,
+
+" go to Last Edit location
+map <leader>le ']
+
+
+"Open find menu to switch between open windows
 map <leader>f :f<cr>
 
 "http://help.eclipse.org/kepler/index.jsp?topic=%2Forg.eclipse.jdt.doc.isv%2Freference%2Fapi%2Forg%2Feclipse%2Fjdt%2Fui%2Factions%2FIJavaEditorActionDefinitionIds.html
@@ -22,4 +33,44 @@ eclipseaction eclipserefactormenu org.eclipse.jdt.ui.edit.text.java.refactor
 eclipseaction eclipserenameelement org.eclipse.jdt.ui.edit.text.java.rename.element
 nnoremap rfr        :eclipserenameelement<cr>
 vnoremap <c-r><c-r> :eclipserenameelement<cr>gv
+
+"show quickfix menu
+eclipseuiaction eclipsequickfix org.eclipse.jdt.ui.edit.text.java.correction.assist.proposals
+"au "Dart Editor" eclipseuiaction eclipsequickfix com.google.dart.tools.ui.specific_content_assist.command
+nnoremap <backspace> :eclipsequickfix<cr>
+vnoremap <backspace> :eclipsequickfix<cr>
+
+eclipseaction eclipsetogglebp org.eclipse.debug.ui.commands.ToggleBreakpoint
+nnoremap <insert> :eclipsetogglebp<cr>
+
+eclipseaction eclipseopenresource org.eclipse.ui.navigate.openResource
+nnoremap <leader>r :eclipseopenresource<cr>
+
+"Not working yet - Find the way to trigger the content assist proposals 
+"eclipseaction eclipsecontentassist org.eclipse.ui.edit.text.contentAssist.proposals
+"nnoremap <space> :eclipsecontentassist<cr>
+
+" amazing 'omnibox' that searches buffers, commands, views, menus, preferences, etc.
+eclipseaction eclipsecmdsearch org.eclipse.ui.window.quickAccess
+nnoremap <leader>ob :eclipsecmdsearch<cr>
+
+" Find References
+eclipseaction eclipsefindref org.eclipse.jdt.ui.edit.text.java.search.references.in.workspace
+nnoremap <leader>fr :eclipsefindref<cr>
+
+" Call Hierarchy
+eclipseaction eclipsecallhierarchy org.eclipse.jdt.ui.edit.text.java.org.eclipse.jdt.ui.edit.text.java.open.call.hierarchy
+nnoremap <leader>ch :eclipsecallhierarchy<cr>
+
+" Go to Implementation 
+eclipseuiaction eclipsegotoimpl org.eclipse.jdt.ui.edit.text.java.open.implementation
+nnoremap <leader>gi :eclipsegotoimpl<cr>
+
+" show type hierarchy relative to current type
+eclipseuiaction eclipsetypehier org.eclipse.jdt.ui.edit.text.java.open.hierarchy
+nnoremap <leader>th :eclipsetypehier<cr>
+
+" go to type
+eclipseuiaction eclipsegototype org.eclipse.jdt.ui.navigate.open.type
+nnoremap gt :eclipsegototype<cr>
 
