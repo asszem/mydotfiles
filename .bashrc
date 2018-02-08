@@ -8,6 +8,8 @@ alias gvimdiff='/c/Program\ Files\ \(x86\)/Vim/vim80/gvim.exe -d'
 alias cd..="cd .."
 alias dir="ls -la"
 alias work='cd c:/at/UIAutomation'
+alias personal='cd c:/java/GitHub'
+
 
 #  SETUP CONSTANTS
 #Source:
@@ -93,6 +95,21 @@ PathShort="\w"
 PathFull="\W"
 NewLine="\n"
 Jobs="\j"
+
+#Sample prompt setup
+#https://serverfault.com/questions/148209/whats-wrong-with-this-bash-prompt
+#COLOR1="\[\e[1;32m\]"
+#COLOR2='\[\e[1;1m\]'
+#COLOR3='\[\e[m\]'
+#GIT_STATUS=$(__git_ps1 " %s")
+#PROMPT_CHAR="$"
+#
+#PROMPT="${COLOR1}\u@\h${COLOR3} \w${COLOR2}${GIT_STATUS} ${COLOR2}${PROMPT_CHAR} ${COLOR3}"
+#PS1="$PROMPT"
+#export PS1
+
+
+
 
 #shopt -s promptvars
 #export GIT_PS1_SHOWDIRTYSTATE=1

@@ -1,5 +1,7 @@
-"Last updated: 2017-11-17
-"Commented out automatic saving when losing focus, set guifont=consolas added
+"Last updated: 2018-02-08
+"2018-02-08 - changed background/foreground color of status line for cterm for better visual highlighting of the active buffer
+"2018-02-08 - changed statusline color and text to display buffer number, file type
+"2017-11-17 Commented out automatic saving when losing focus, set guifont=consolas added
 "============================================================================================================
 "~~	MAPLEADER Settings ~~
 "============================================================================================================
@@ -12,6 +14,12 @@
 	map <leader>j :jumps<cr>
 	":diffupdate
 	map <leader>du :diffupdate<cr>
+	"jumps to the next change
+	map <leader>c ]c
+	"jumps to the previous change
+	map <leader>C [c
+	"turns on word wrap for every open buffer
+	map <leader>w :windo set wrap<cr>
 	
 ""============================================================================================================
 ""~~	CFSW Specific Settings ~~
@@ -19,7 +27,6 @@
 	"Find FS/TS or FM/TM that was preceeded by exactly 38 any chars and followed by a whitespace - SVC and MVM flags on RT67, position 40
 	map <leader>svc /^.\{38}[FT][MS]\s<cr>	
 	map <F11> :tabnew ~\Box Sync\CFSW\CFSW Text Notes.txt<cr>
-	
 
 "============================================================================================================
 "~~	Plugins
@@ -137,9 +144,14 @@
 "============================================================================================================
 	"Kikapcsolja az idegesítő csipogást és villogást
 		set vb t_vb=
-	"Beállítja a morning színsémát, az általam testreszabott státuszsorral
+	"Change color scheme for gvim to peachpuff
 		:color peachpuff 
-		:highlight statusline gui=NONE guibg=Orange guifg=Black
+		:highlight statusline gui=NONE guibg=Yellow guifg=black
+		:highlight statuslineNC gui=NONE guibg=gray guifg=black
+	"Set status line
+		:highlight statusline ctermbg=black ctermfg=yellow
+		:highlight statuslineNC ctermbg=white ctermfg=blue
+		:highlight DiffText ctermfg=yellow
 	"Státusz line variációk
 		"set statusline=%<%F%h%m%r%h%w%y\ %{&ff}\ %{strftime(\"%c\",getftime(expand(\"%:p\")))}%=\ lin:%l\,%L\ col:%c%V\ pos:%o\ ascii:%b\ %P
 		"set statusline=%<%F%h%m%r%h%w%y\ [FORMAT=%{&ff}]\ %{strftime(\"%c\",getftime(expand(\"%:p\")))}%=\ lin:%l\,%L\ col:%c%V\ pos:%o\ ascii:%b\ %P
@@ -147,7 +159,19 @@
 		"saját barkácsolás
 		"set statusline=[%-n]\ %<%t%m%r%w%y\ %=\ Lin[%l\/%L]\ Col[%c%V]\ File[%F]\ Date[%{strftime(\"%Y.%m.%d.\|%H:%M\",getftime(expand(\"%:p\")))}]\ %P
 		"set statusline=%f\ %=\ [%{strftime(\"%Y-%m-%d\ %H:%M\",getftime(expand(\"%:p\")))}]\ [%{&fileencoding?&fileencoding:&encoding}]\ [%-n]\ %m\ [%F]\ %=\ Lin[%l\/%L]\ Col[%c%V]\ %P
-		set statusline=%f\ [%{strftime(\"%Y-%m-%d\ %H:%M\",getftime(expand(\"%:p\")))}]\ [%{&fileencoding?&fileencoding:&encoding}]\ [%-n]\ %m\ %=\ [%F]\ Lin[%l\/%L]\ Col[%c%V]\ %P
+		"set statusline=%f\ [%{strftime(\"%Y-%m-%d\ %H:%M\",getftime(expand(\"%:p\")))}]\ [%{&fileencoding?&fileencoding:&encoding}]\ [%-n]\ %m\ %=\ [%F]\ Lin[%l\/%L]\ Col[%c%V]\ %P
+        set statusline=  
+        set statusline+=Buff[%.3n]\                  " buffer number  
+        set statusline+=%f\                          " filename   
+        set statusline+=%h%m%r%w                     " status flags  
+        set statusline+=\[%{strlen(&ft)?&ft:'none'}] " file type  
+		set statusline+=\[%{&fileencoding?&fileencoding:&encoding}]
+        set statusline+=%=                           " right align remainder  
+        "set statusline+=0x%-8B                       " character value  
+        set statusline+=%-12(%l,%c%V%)               " line, character  
+        set statusline+=%<%P                         " file position  
+
+		
 	"A menük eltüntetése, csak a tab marad meg
 		set guioptions=ae
 		"set go-=T 
