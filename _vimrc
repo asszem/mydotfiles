@@ -112,7 +112,8 @@
 	"Karakterkódolás beállítása
 		set encoding=utf-8
 	"To display proper accented characters in UTF-8 encoding
-		set guifont=Consolas
+		"set guifont=monofur_for_Powerline:h11:cEASTEUROPE:qDRAFT
+		set guifont=Droid_Sans_Mono_Slashed_for_Pow:h10:cEASTEUROPE:qDRAFT
 	"Az aktuális fájl mappátját állítja be PWD-nek
 	  	nnoremap <Leader>cd :cd %:h<bar>pwd<cr>
 	" Reload file if it's modified outside
@@ -183,9 +184,12 @@
 	let g:airline#extensions#tabline#enabled = 1
 	let g:airline#extensions#tabline#formatter = 'unique_tail'  "display only the filename for the buffers
 
+	"To make it work in Windows
+	set rop=type:directx,gamma:1.0,contrast:0.5,level:1,geom:1,renmode:4,taamode:1
+
 	"Set contant of Airline statusline C and Z
-	let g:airline_section_c='[%.3n] %f'					" filename only withouth path
-	let g:airline_section_z='%l:%c[%P]'			" filename only withouth path
+	let g:airline_section_c='%f [%.3n]'			" filename f - no path F - full path
+	let g:airline_section_z='%l:%c[%P]'			" line:column[position%]
 
 	"Státusz line variációk
 		"set statusline=%<%F%h%m%r%h%w%y\ %{&ff}\ %{strftime(\"%c\",getftime(expand(\"%:p\")))}%=\ lin:%l\,%L\ col:%c%V\ pos:%o\ ascii:%b\ %P
@@ -226,8 +230,14 @@
 		set number 
 	"Relative line number
 		"set rnu 
-	"Mutatja hol a kurzor
-		set cursorline 
+	" turns cursorline off when leaving windows/buffer
+		augroup CursorLine
+			au!
+			au VimEnter * setlocal cursorline
+			au WinEnter * setlocal cursorline
+			au BufWinEnter * setlocal cursorline
+			au WinLeave * setlocal nocursorline
+		augroup END
 	"14 space-t szúr be shobreak után
 		let &showbreak=repeat(' ', 14) 
 	" New split window on the right

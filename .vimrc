@@ -219,8 +219,14 @@
 		set number 
 	"Relative line number
 		"set rnu 
-	"Mutatja hol a kurzor
-		set cursorline 
+	" turns cursorline off when leaving windows/buffer
+		augroup CursorLine
+			au!
+			au VimEnter * setlocal cursorline
+			au WinEnter * setlocal cursorline
+			au BufWinEnter * setlocal cursorline
+			au WinLeave * setlocal nocursorline
+		augroup END
 	"14 space-t szúr be shobreak után
 		let &showbreak=repeat(' ', 14) 
 	" New split window on the right
