@@ -1,6 +1,7 @@
-"Last updated: 2017-10-22
-"This vimrc is updated for Linux.
-"The .vimrc file in ~ is a symbolic link to the original file in the mydotfiles github folder
+"Last updated: 2018-02-10
+"2018-02-10 Add Airline & AirlineTheme & Powerline fonts
+"2018-02-10 Add easymotion, update statusline and colors
+"2017-10-22 This vimrc is updated for Linux. The .vimrc file in ~ is a symbolic link to the original file in the mydotfiles github folder
 "============================================================================================================
 "~~	MAPLEADER Settings ~~
 "============================================================================================================
@@ -13,12 +14,26 @@
 	map <leader>j :jumps<cr>
 	":diffupdate
 	map <leader>du :diffupdate<cr>
+	"jumps backward on the changes list - to the PREVIUS change
+	map <leader>c g;
+	"jumps forward to the changes list - to the NEXT change
+	map <leader>C g,
+	"turns on word wrap for every open buffer
+	map <leader>w :windo set wrap<cr>
+"============================================================================================================
+"~~	EasyMotion Settings ~~
+"============================================================================================================
+	"Set EasyMotion trigger key
+	nmap <space> <Plug>(easymotion-prefix)
+	"Set multicharacter search
+	nmap <CR> <Plug>(easymotion-sn)
+	"Use easymotion bi-directional single character find motion
+	nmap <s> <Plug>(easymotion-overwin-f)
 "============================================================================================================
 "~~	Plugins
 "============================================================================================================
 	"Pathogen
 	execute pathogen#infect()
-
 	"Nerdtree - always show the bookmarks 
 	let NERDTreeShowBookmarks=1 
 	"Ctrl-p
@@ -65,32 +80,6 @@
      let &shellxquote=l:shxq_sav
     endif
  	endfunction
-
-
-	"set diffexpr=MyDiff()
-	"function MyDiff()
-	"  let opt = '-a --binary '
-	"  if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
-	"  if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
-	"  let arg1 = v:fname_in
-	"  if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
-	"  let arg2 = v:fname_new
-	"  if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
-	"  let arg3 = v:fname_out
-	"  if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
-	"  let eq = ''
-	"  if $VIMRUNTIME =~ ' '
-	"    if &sh =~ '\<cmd'
-	"      let cmd = '""' . $VIMRUNTIME . '\diff"'
-	"      let eq = '"'
-	"    else
-	"      let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
-	"    endif
-	"  else
-	"    let cmd = $VIMRUNTIME . '\diff'
-	"  endif
-	"  silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
-	"endfunction
 "============================================================================================================
 "~~	WILDMENU settings ~~
 "============================================================================================================
@@ -114,6 +103,8 @@
 		noremap <leader>cdoff :set noautochdir<cr>
 	"Karakterkódolás beállítása
 		set encoding=utf-8
+	"To display proper accented characters in UTF-8 encoding
+		set guifont=Consolas
 	"Az aktuális fájl mappátját állítja be PWD-nek
 	  	nnoremap <Leader>cd :cd %:h<bar>pwd<cr>
 	" Reload file if it's modified outside
@@ -135,23 +126,60 @@
 	"Kiszedi a keresés kiemelését
 		noremap <leader><space> :noh<cr>:call clearmatches()<cr>
 	"Space-re keres előre, C-Space-re visszafelé, regexek very magicre állítva
-		noremap <Space> /\v
-		noremap <C-Space> ?\v
+		"noremap <Space> /\v
+		"noremap <C-Space> ?\v
 	" Keep search matches in the middle of the window and pulse the line when moving to them.
 		nnoremap n nzzzv
 		nnoremap N Nzzzv
 	" Ugyanúgy automatikusan középre zoomol előző-következő change-re ugrásnál is
 	" Valamint felcseréli az előre-hátra haladást, az előző változtatás lesz a g,
-		nnoremap g; g,zz
-		nnoremap g, g;zz
+		"nnoremap g; g,zz
+		"nnoremap g, g;zz
+	"map to search the visually selected text
+		vnoremap // y/<C-R>"<CR>
 "============================================================================================================
-"~~	GUI settings ~~
+"~~	Statusline settings ~~
 "============================================================================================================
-	"Kikapcsolja az idegesítő csipogást és villogást
+	"Turns visual bell and beep off
 		set vb t_vb=
-	"Beállítja a morning színsémát, az általam testreszabott státuszsorral
-		:color blue 
-		:highlight statusline gui=NONE guibg=Orange guifg=Black
+	"Set color scheme
+		:color molokai_dark 
+	"Set status line color GUI
+		:highlight statusline gui=NONE guibg=Yellow guifg=black
+		:highlight statuslineNC gui=NONE guibg=gray guifg=black
+	"Set status line color CTERM
+		:highlight statusline ctermbg=black ctermfg=yellow
+		:highlight statuslineNC ctermbg=white ctermfg=blue
+		:highlight DiffText ctermfg=yellow
+	"Set status line content
+        set statusline=  
+        set statusline+=Buff[%.3n]\                  " buffer number  
+        set statusline+=%f\                          " filename   
+        set statusline+=%h%m%r%w                     " status flags  
+        set statusline+=\[%{strlen(&ft)?&ft:'none'}] " file type  
+		set statusline+=\[%{&fileencoding?&fileencoding:&encoding}]
+        set statusline+=%=                           " right align remainder  
+        "set statusline+=0x%-8B                       " character value  
+        set statusline+=%-12(%l,%c%V%)               " line, character  
+        set statusline+=%<%P                         " file position  
+"============================================================================================================
+"~~	Airline settings ~~
+"============================================================================================================
+	"use special characters in statusline
+	let g:airline_powerline_fonts = 1
+	if !exists('g:airline_symbols')
+	  let g:airline_symbols = {}
+	endif
+	let g:airline_symbols.space = "\ua0"
+
+	"display all buffers on top
+	let g:airline#extensions#tabline#enabled = 1
+	let g:airline#extensions#tabline#formatter = 'unique_tail'  "display only the filename for the buffers
+
+	"Set contant of Airline statusline C and Z
+	let g:airline_section_c='[%.3n] %f'					" filename only withouth path
+	let g:airline_section_z='%l:%c[%P]'			" filename only withouth path
+
 	"Státusz line variációk
 		"set statusline=%<%F%h%m%r%h%w%y\ %{&ff}\ %{strftime(\"%c\",getftime(expand(\"%:p\")))}%=\ lin:%l\,%L\ col:%c%V\ pos:%o\ ascii:%b\ %P
 		"set statusline=%<%F%h%m%r%h%w%y\ [FORMAT=%{&ff}]\ %{strftime(\"%c\",getftime(expand(\"%:p\")))}%=\ lin:%l\,%L\ col:%c%V\ pos:%o\ ascii:%b\ %P
@@ -159,7 +187,10 @@
 		"saját barkácsolás
 		"set statusline=[%-n]\ %<%t%m%r%w%y\ %=\ Lin[%l\/%L]\ Col[%c%V]\ File[%F]\ Date[%{strftime(\"%Y.%m.%d.\|%H:%M\",getftime(expand(\"%:p\")))}]\ %P
 		"set statusline=%f\ %=\ [%{strftime(\"%Y-%m-%d\ %H:%M\",getftime(expand(\"%:p\")))}]\ [%{&fileencoding?&fileencoding:&encoding}]\ [%-n]\ %m\ [%F]\ %=\ Lin[%l\/%L]\ Col[%c%V]\ %P
-		set statusline=%f\ [%{strftime(\"%Y-%m-%d\ %H:%M\",getftime(expand(\"%:p\")))}]\ [%{&fileencoding?&fileencoding:&encoding}]\ [%-n]\ %m\ %=\ [%F]\ Lin[%l\/%L]\ Col[%c%V]\ %P
+		"set statusline=%f\ [%{strftime(\"%Y-%m-%d\ %H:%M\",getftime(expand(\"%:p\")))}]\ [%{&fileencoding?&fileencoding:&encoding}]\ [%-n]\ %m\ %=\ [%F]\ Lin[%l\/%L]\ Col[%c%V]\ %P
+"============================================================================================================
+"~~	UI settings ~~
+"============================================================================================================
 	"A menük eltüntetése, csak a tab marad meg
 		set guioptions=ae
 		"set go-=T 
@@ -212,7 +243,7 @@
 		"noremap :W :w<cr>
 		:command W w
 	"ENTER-re a képernyő közepére igazítja az aktuális sort
-		nnoremap <cr> zvzz
+		"nnoremap <cr> zvzz
 	"Kurzormozgatás átmappolása
 		noremap j gj
 		noremap k gk
@@ -273,12 +304,12 @@
 		nnoremap <m-j> <C-w>j
 		nnoremap <m-k> <C-w>k
 	" Window resizing
-		nnoremap <S-C-left> 5<c-w>>
-		nnoremap <S-C-right> 5<c-w><
+		nnoremap <S-C-right> 5<c-w>>
+		nnoremap <S-C-left> 5<c-w><
 		nnoremap <S-C-up> 5<c-w>+
 		nnoremap <S-C-down> 5<c-w>-
 	"Minden ablakváltáskor ment egyet.
-		au FocusLost * :wa 
+		"au FocusLost * :wa 
 	"Mindig mentse az aktuális view-t a fájlhoz -> kikapcsoltam, mert sok hibát dobott.
 		"au BufWinLeave * mkview
 		"au BufWinEnter * silent loadview
@@ -302,10 +333,12 @@
 		"map <F5> :wa! <bar> mkview <cr>
 		map <F5> :wa!<cr>
 	"Azoknak a soroknak kiírása global-al, amelyekben benne van a dupla ~ jel
-		map <F10> :g/\~\~<cr>
+		"map <F10> :g/\~\~<cr>
 	"Minden tabot elment egy "sessionsave" nevű file-ba.
 		map <F6> :mksession! $HOME/.vim/sessions/sessionmanualsave.vim<cr>
 		map <F9> :so $HOME/.vim/sessions/sessionmanualsave.vim<cr>
+	"Opens a new tab
+		map <F10> :tabnew<cr>
 
 "============================================================================================================
 "~~	SESSION Settings ~~
@@ -351,8 +384,6 @@ endif
 
 	"Start Gvim maximized
 	"au GUIEnter * simalt ~m
-	" to start commands with ; --- not sure if I will like this
-	"nnoremap ; :
 	"Ez a helpben fontos, eredetilega  CTRL-G az az aktulis fájl infoit mutatja.
 		noremap <C-g> <C-]>
 	"Timestamp beállítások
@@ -389,7 +420,3 @@ endif
 		"set shellcmdflag=-Command
 	"Source
 		"http://juliankay.com/development/setting-up-vim-to-work-with-powershell/
-"============================================================================================================
-"~~	Computer specific settings ~~
-"============================================================================================================
-	"set viewdir=d:\Dropbox\VIMDropbox\viewdir\
