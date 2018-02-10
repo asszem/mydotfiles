@@ -1,4 +1,5 @@
 "Last updated: 2018-02-10
+"2018-02-10 - Replaced Pathogen with Vundle
 "2018-02-10 Add Airline & AirlineTheme & Powerline fonts, fugitive for Git integration, quickfixsigns for displaying Git changes
 "2018-02-10 Add easymotion, update statusline and colors
 "2017-10-22 This vimrc is updated for Linux. The .vimrc file in ~ is a symbolic link to the original file in the mydotfiles github folder
@@ -32,10 +33,42 @@
 	"Use easymotion bi-directional single character find motion
 	nmap <s> <Plug>(easymotion-overwin-f)
 "============================================================================================================
-"~~	Plugins
+"~~	Vundle Plugins
 "============================================================================================================
-	"Pathogen
-	execute pathogen#infect()
+	set nocompatible              " be iMproved, required
+	filetype off                  " required
+
+	" set the runtime path to include Vundle and initialize
+	set rtp+=$HOME/.vim/bundle/Vundle.vim/
+	call vundle#begin('$HOME/.vim/bundle/')
+	" alternatively, pass a path where Vundle should install plugins
+	"call vundle#begin('~/some/path/here')
+
+	" let Vundle manage Vundle, required
+	Plugin 'VundleVim/Vundle.vim'
+
+	" Keep Plugin commands between vundle#begin/end.
+	Plugin 'tpope/vim-fugitive'
+	Plugin 'ctrlpvim/ctrlp.vim'
+	Plugin 'scrooloose/nerdtree'
+	Plugin 'Xuyuanp/nerdtree-git-plugin'
+	Plugin 'vim-airline/vim-airline'
+	Plugin 'vim-airline/vim-airline-themes'
+	Plugin 'easymotion/vim-easymotion'
+	Plugin 'powerline/powerline-fonts'
+	Plugin 'flazz/vim-colorschemes'
+	"Plugin 'airblade/vim-gitgutter'
+	Plugin 'mhinz/vim-signify'
+
+	" All of your Plugins must be added before the following line
+	call vundle#end()            " required
+	filetype plugin indent on    " required
+"============================================================================================================
+"~~	Plugin specific settings
+"============================================================================================================
+"============================================================================================================
+"~~	Plugin specific settings
+"============================================================================================================
 	"Nerdtree - always show the bookmarks 
 	let NERDTreeShowBookmarks=1 
 	"Ctrl-p
