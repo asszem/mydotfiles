@@ -1,6 +1,6 @@
 "Last updated: 2018-02-10
-"2018-02-10 - Replaced Pathogen with Vundle
-"2018-02-10 - Add Airline & AirlineTheme & Powerline fonts, fugitive for Git integration, quickfixsigns for displaying Git changes
+"2018-02-10 Replaced Pathogen with Vundle and added multiple plugins (see under Vundle)
+"2017-10-22 This vimrc is updated for Linux. The .vimrc file in ~ is a symbolic link to the original file in the mydotfiles github folder
 "2018-02-08 - changed background/foreground color of status line for cterm for better visual highlighting of the active buffer
 "2018-02-08 - changed statusline color and text to display buffer number, file type
 "2017-11-17 Commented out automatic saving when losing focus, set guifont=consolas added
@@ -67,6 +67,8 @@
 	Plugin 'flazz/vim-colorschemes'
 	"Plugin 'airblade/vim-gitgutter'
 	Plugin 'mhinz/vim-signify'
+	Plugin 'mhinz/vim-startify'
+	Plugin 'mbbill/undotree'
 
 	" All of your Plugins must be added before the following line
 	call vundle#end()            " required
@@ -135,7 +137,7 @@
 	"Ide rakja a backupot, .un file-t és swap file-t pedig ne csináljon
 		set nobackup
 		set noswapfile
-		set noundofile
+		"set noundofile
 	"Mentés nélkül is lehessen buffert váltani
 		set hidden 
 	"A mappaváltással a PWD is automatikusan változik
@@ -314,8 +316,20 @@
 		inoremap <C-k> <down>
 	"Insert módban így egészíti ki
 		set completeopt=longest,menuone,preview
-	"Gundo toggle átmappolása
-		nnoremap U :GundoToggle<cr>
+	"UndotreeToggle setup
+		nnoremap U :UndotreeToggle<cr>
+	"Setup folder for storing persistent undo information
+		if has("persistent_undo")
+			set undodir=~/.vim/undodir/
+			set undofile
+		endif	
+	"Set the color for UndoTree add and change
+		if !exists('g:undotree_HighlightSyntaxAdd')
+			let g:undotree_HighlightSyntaxAdd = "SpellCap"
+		endif
+		if !exists('g:undotree_HighlightSyntaxChange')
+			let g:undotree_HighlightSyntaxChange = "Title"
+		endif 
 	"Dokumentum aljára ugrás
 		nnoremap <Leader>g G<cr>
 	"marks-ra ugrás
