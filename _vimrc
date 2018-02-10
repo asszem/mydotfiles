@@ -1,5 +1,5 @@
 "Last updated: 2018-02-10
-"2018-02-10 - Add easymotion and Airline settings
+"2018-02-10 Add Airline & AirlineTheme & Powerline fonts, fugitive for Git integration, quickfixsigns for displaying Git changes
 "2018-02-08 - changed background/foreground color of status line for cterm for better visual highlighting of the active buffer
 "2018-02-08 - changed statusline color and text to display buffer number, file type
 "2017-11-17 Commented out automatic saving when losing focus, set guifont=consolas added
@@ -21,6 +21,8 @@
 	map <leader>C g,
 	"turns on word wrap for every open buffer
 	map <leader>w :windo set wrap<cr>
+	"fugitive git status
+	map <leader>gs :Gstatus<cr>
 "============================================================================================================
 "~~	EasyMotion Setings ~~
 "============================================================================================================
@@ -180,6 +182,7 @@
 	  let g:airline_symbols = {}
 	endif
 	let g:airline_symbols.space = "\ua0"
+
 	"display all buffers on top
 	let g:airline#extensions#tabline#enabled = 1
 	let g:airline#extensions#tabline#formatter = 'unique_tail'  "display only the filename for the buffers
@@ -188,8 +191,8 @@
 	set rop=type:directx,gamma:1.0,contrast:0.5,level:1,geom:1,renmode:4,taamode:1
 
 	"Set contant of Airline statusline C and Z
-	let g:airline_section_c='%f [%.3n]'			" filename f - no path F - full path
-	let g:airline_section_z='%l:%c[%P]'			" line:column[position%]
+	let g:airline_section_c='%f [%.3n]%m'			" %f=filename only %F=filename with path %.3n=buffer number %m=modified flag
+	let g:airline_section_z='%l:%c[%P]'				" line:column[position%]
 
 	"Státusz line variációk
 		"set statusline=%<%F%h%m%r%h%w%y\ %{&ff}\ %{strftime(\"%c\",getftime(expand(\"%:p\")))}%=\ lin:%l\,%L\ col:%c%V\ pos:%o\ ascii:%b\ %P

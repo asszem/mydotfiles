@@ -1,5 +1,5 @@
 "Last updated: 2018-02-10
-"2018-02-10 Add Airline & AirlineTheme & Powerline fonts
+"2018-02-10 Add Airline & AirlineTheme & Powerline fonts, fugitive for Git integration, quickfixsigns for displaying Git changes
 "2018-02-10 Add easymotion, update statusline and colors
 "2017-10-22 This vimrc is updated for Linux. The .vimrc file in ~ is a symbolic link to the original file in the mydotfiles github folder
 "============================================================================================================
@@ -20,6 +20,8 @@
 	map <leader>C g,
 	"turns on word wrap for every open buffer
 	map <leader>w :windo set wrap<cr>
+	"fugitive git status
+	map <leader>gs :Gstatus<cr>
 "============================================================================================================
 "~~	EasyMotion Settings ~~
 "============================================================================================================
@@ -177,8 +179,8 @@
 	let g:airline#extensions#tabline#formatter = 'unique_tail'  "display only the filename for the buffers
 
 	"Set contant of Airline statusline C and Z
-	let g:airline_section_c='[%.3n] %f'					" filename only withouth path
-	let g:airline_section_z='%l:%c[%P]'			" filename only withouth path
+	let g:airline_section_c='%f [%.3n]%m'			" %f=filename only %F=filename with path %.3n=buffer number %m=modified flag
+	let g:airline_section_z='%l:%c[%P]'				" line:column[position%]
 
 	"Státusz line variációk
 		"set statusline=%<%F%h%m%r%h%w%y\ %{&ff}\ %{strftime(\"%c\",getftime(expand(\"%:p\")))}%=\ lin:%l\,%L\ col:%c%V\ pos:%o\ ascii:%b\ %P
