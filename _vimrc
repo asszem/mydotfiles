@@ -1,92 +1,6 @@
-"Last updated: 2018-02-10
-"2018-02-10 Replaced Pathogen with Vundle and added multiple plugins (see under Vundle)
-"2017-10-22 This vimrc is updated for Linux. The .vimrc file in ~ is a symbolic link to the original file in the mydotfiles github folder
-"2018-02-08 - changed background/foreground color of status line for cterm for better visual highlighting of the active buffer
-"2018-02-08 - changed statusline color and text to display buffer number, file type
-"2017-11-17 Commented out automatic saving when losing focus, set guifont=consolas added
+"Last updated: 2018-02-11
 "============================================================================================================
-"~~	MAPLEADER Settings ~~
-"============================================================================================================
-	let mapleader=","
-	"Toggle Nerdtree file manager with ,n 
-	map <leader>n :NERDTreeToggle<cr>
-	"Open the buffers list with ,b
-	map <leader>b :buffers<cr>
-	"Opens the jumps list. Ctrl-o and Ctrl-i to jump
-	map <leader>j :jumps<cr>
-	":diffupdate
-	map <leader>du :diffupdate<cr>
-	"jumps backward on the changes list - to the PREVIUS change
-	map <leader>c g;
-	"jumps forward to the changes list - to the NEXT change
-	map <leader>C g,
-	"turns on word wrap for every open buffer
-	map <leader>w :windo set wrap<cr>
-	"fugitive git status
-	map <leader>gs :Gstatus<cr>
-"============================================================================================================
-"~~	EasyMotion Settings ~~
-"============================================================================================================
-	"Set EasyMotion trigger key
-	nmap <space> <Plug>(easymotion-prefix)
-	"Set multicharacter search
-	nmap <CR> <Plug>(easymotion-sn)
-	"Use easymotion bi-directional single character find motion
-	nmap <s> <Plug>(easymotion-overwin-f)
-""============================================================================================================
-""~~	CFSW Specific Settings ~~
-""============================================================================================================
-	"Find FS/TS or FM/TM that was preceeded by exactly 38 any chars and followed by a whitespace - SVC and MVM flags on RT67, position 40
-	map <leader>svc /^.\{38}[FT][MS]\s<cr>	
-	map <F11> :tabnew ~\Box Sync\CFSW\CFSW Text Notes.txt<cr>
-
-"============================================================================================================
-"~~	Vundle Plugins
-"============================================================================================================
-	set nocompatible              " be iMproved, required
-	filetype off                  " required
-
-	" set the runtime path to include Vundle and initialize
-	set rtp+=$HOME/.vim/bundle/Vundle.vim/
-	call vundle#begin('$HOME/.vim/bundle/')
-	" alternatively, pass a path where Vundle should install plugins
-	"call vundle#begin('~/some/path/here')
-
-	" let Vundle manage Vundle, required
-	Plugin 'VundleVim/Vundle.vim'
-
-	" Keep Plugin commands between vundle#begin/end.
-	Plugin 'tpope/vim-fugitive'
-	Plugin 'ctrlpvim/ctrlp.vim'
-	Plugin 'scrooloose/nerdtree'
-	Plugin 'Xuyuanp/nerdtree-git-plugin'
-	Plugin 'vim-airline/vim-airline'
-	Plugin 'vim-airline/vim-airline-themes'
-	Plugin 'easymotion/vim-easymotion'
-	Plugin 'powerline/powerline-fonts'
-	Plugin 'flazz/vim-colorschemes'
-	"Plugin 'airblade/vim-gitgutter'
-	Plugin 'mhinz/vim-signify'
-	Plugin 'mhinz/vim-startify'
-	Plugin 'mbbill/undotree'
-
-	" All of your Plugins must be added before the following line
-	call vundle#end()            " required
-	filetype plugin indent on    " required
-"============================================================================================================
-"~~	Plugin specific settings
-"============================================================================================================
-	"Nerdtree - always show the bookmarks 
-	let NERDTreeShowBookmarks=1 
-	"Ctrl-p
-	set runtimepath^=~/.vim/bundle/ctrlp.vim
-	"to open CtrlP with MRU-Files-Buffers mixed mode
-	"map <c-p> :CtrlPMixed<cr>
-	map <c-p> :CtrlPMRU<cr>
-	let g:ctrlp_cmd = 'CtrlPMRU'
-	"http://ctrlpvim.github.io/ctrlp.vim/#installation"
-"============================================================================================================
-"~~	Default settings ~~
+"~~	|Diff Settings| ~~
 "============================================================================================================
 	"a ctrl-V átmappolása mielőtt az mswin.vim a rendszerszintű paste-t rakja be helyette
 	map <leader>v <c-q>
@@ -123,70 +37,107 @@
     endif
  	endfunction
 "============================================================================================================
-"~~	WILDMENU settings ~~
+"~~	|Vundle Plugin Configurations| ~~
 "============================================================================================================
-	"Ha van lehetőség, akkor menüben mutatja meg a TAB utáni autocomplete lehetőségeket
-		set wildmenu 
-	"A wildmode-ban kiírja a lehetőségeket is függőleges menüben
-		"A longest azt csinálja, hogy csak az első ambiguitásig egészíti ki
-		"Vessző után a full pedig a második tabra már teljesen kiegészíti
-		set wildmode=list:longest,full
+	set nocompatible              " be iMproved, required
+	filetype off                  " required
+
+	" set the runtime path to include Vundle and initialize
+	set rtp+=$HOME/.vim/bundle/Vundle.vim/
+	call vundle#begin('$HOME/.vim/bundle/')
+	" alternatively, pass a path where Vundle should install plugins
+	"call vundle#begin('~/some/path/here')
+
+	" let Vundle manage Vundle, required
+	Plugin 'VundleVim/Vundle.vim'
+
+	" Keep Plugin commands between vundle#begin/end.
+	Plugin 'tpope/vim-fugitive'
+	Plugin 'ctrlpvim/ctrlp.vim'
+	Plugin 'scrooloose/nerdtree'
+	Plugin 'Xuyuanp/nerdtree-git-plugin'
+	Plugin 'vim-airline/vim-airline'
+	Plugin 'vim-airline/vim-airline-themes'
+	Plugin 'easymotion/vim-easymotion'
+	Plugin 'powerline/powerline-fonts'
+	Plugin 'flazz/vim-colorschemes'
+	"Plugin 'airblade/vim-gitgutter'
+	Plugin 'mhinz/vim-signify'
+	Plugin 'mhinz/vim-startify'
+	Plugin 'mbbill/undotree'
+
+	" All of your Plugins must be added before the following line
+	call vundle#end()            " required
+	filetype plugin indent on    " required
 "============================================================================================================
-"~~	FILE, BACKUP, MAPPA, Encoding settings	 ~~
+"~~	|Plugin Specific Settings| ~~
 "============================================================================================================
-	"Ide rakja a backupot, .un file-t és swap file-t pedig ne csináljon
-		set nobackup
-		set noswapfile
-		"set noundofile
-	"Mentés nélkül is lehessen buffert váltani
-		set hidden 
-	"A mappaváltással a PWD is automatikusan változik
-		set autochdir
-		noremap <leader>cdoff :set noautochdir<cr>
-	"Karakterkódolás beállítása
-		set encoding=utf-8
-	"To display proper accented characters in UTF-8 encoding
-		"set guifont=monofur_for_Powerline:h11:cEASTEUROPE:qDRAFT
-		set guifont=Droid_Sans_Mono_Slashed_for_Pow:h10:cEASTEUROPE:qDRAFT
-	"Az aktuális fájl mappátját állítja be PWD-nek
-	  	nnoremap <Leader>cd :cd %:h<bar>pwd<cr>
-	" Reload file if it's modified outside
-		set autoread
-		set autowrite
+	"|Easymotion|
+		"Set EasyMotion trigger key
+		nmap <space> <Plug>(easymotion-prefix)
+		"Set multicharacter search
+		nmap <CR> <Plug>(easymotion-sn)
+		"Use easymotion bi-directional single character find motion
+		nmap <s> <Plug>(easymotion-overwin-f)
+	"|Nerdtree|
+		"always show the bookmarks 
+		let NERDTreeShowBookmarks=1 
+	"|Ctrl-p|
+		set runtimepath^=~/.vim/bundle/ctrlp.vim
+		"to open CtrlP with MRU-Files-Buffers mixed mode
+		"map <c-p> :CtrlPMixed<cr>
+		map <c-p> :CtrlPMRU<cr>
+		let g:ctrlp_cmd = 'CtrlPMRU'
+		"http://ctrlpvim.github.io/ctrlp.vim/#installation"
+	"|Airline|
+		"use special characters in statusline
+		let g:airline_powerline_fonts = 1
+		if !exists('g:airline_symbols')
+		  let g:airline_symbols = {}
+		endif
+		let g:airline_symbols.space = "\ua0"
+		"display all buffers on top
+		let g:airline#extensions#tabline#enabled = 1
+		let g:airline#extensions#tabline#formatter = 'unique_tail'  "display only the filename for the buffers
+		"To make it work in Windows
+		set rop=type:directx,gamma:1.0,contrast:0.5,level:1,geom:1,renmode:4,taamode:1
+		"Set contant of Airline statusline C and Z
+		let g:airline_section_c='%f [%.3n]%m'			" %f=filename only %F=filename with path %.3n=buffer number %m=modified flag
+		let g:airline_section_z='%l:%c[%P]'				" line:column[position%]
+		"Set the airline theme 
+		let g:airline_theme='powerlineish'
 "============================================================================================================
-"~~	KERESÉSI és SUBSTITUTE settings ~~
+"~~	|Mapleader Settings| ~~
 "============================================================================================================
-	"Substitute kezdése egyszerűbben, automatikusan kieszképelve minden regexet
-		nnoremap <leader>s :%s,\v
-	"Keresés ne legyen betűérzékeny
-		set ignorecase 
-	"Ha csak kisbetűvel keresek, nem érzékeny, ha van benne nagybetű is, akkor igen.
-		set smartcase 
-	"Ha zárójelet nyitok, akkor egy pillanatra átugrik (a végére is), amikor bezártam
-		set showmatch 
-	"A keresési eredményeket már a keresés közben is mutatja a háttér kiemelésével
-		set hlsearch 
-	"Kiszedi a keresés kiemelését
-		noremap <leader><space> :noh<cr>:call clearmatches()<cr>
-	"Space-re keres előre, C-Space-re visszafelé, regexek very magicre állítva
-		"noremap <Space> /\v
-		"noremap <C-Space> ?\v
-	" Keep search matches in the middle of the window and pulse the line when moving to them.
-		nnoremap n nzzzv
-		nnoremap N Nzzzv
-	" Ugyanúgy automatikusan középre zoomol előző-következő change-re ugrásnál is
-	" Valamint felcseréli az előre-hátra haladást, az előző változtatás lesz a g,
-		"nnoremap g; g,zz
-		"nnoremap g, g;zz
-	"map to search the visually selected text
-		vnoremap // y/<C-R>"<CR>
+	let mapleader=","
+	"Toggle Nerdtree file manager with ,n 
+	map <leader>n :NERDTreeToggle<cr>
+	"Open the buffers list with ,b
+	map <leader>b :buffers<cr>
+	"Opens the jumps list. Ctrl-o and Ctrl-i to jump
+	map <leader>j :jumps<cr>
+	":diffupdate
+	map <leader>du :diffupdate<cr>
+	"jumps backward on the changes list - to the PREVIUS change
+	map <leader>c g;
+	"jumps forward to the changes list - to the NEXT change
+	map <leader>C g,
+	"turns on word wrap for every open buffer
+	map <leader>w :windo set wrap<cr>
+	"fugitive git status
+	map <leader>gs :Gstatus<cr>
 "============================================================================================================
-"~~	Statusline settings ~~
+"~~ |Colors, Colorschemes| ~~
 "============================================================================================================
-	"Turns visual bell and beep off
-		set vb t_vb=
 	"Set color scheme
-		:color molokai_dark 
+		:color pablo
+	"Color overrides for Pablo
+		:highlight Comment ctermfg=6
+		:highlight Folded ctermfg=0
+		:highlight diffChange ctermfg=11
+"============================================================================================================
+"~~	|Statusline Settings| ~~
+"============================================================================================================
 	"Set status line color GUI
 		:highlight statusline gui=NONE guibg=Yellow guifg=black
 		:highlight statuslineNC gui=NONE guibg=gray guifg=black
@@ -205,28 +156,7 @@
         "set statusline+=0x%-8B                       " character value  
         set statusline+=%-12(%l,%c%V%)               " line, character  
         set statusline+=%<%P                         " file position  
-"============================================================================================================
-"~~	Airline settings ~~
-"============================================================================================================
-	"use special characters in statusline
-	let g:airline_powerline_fonts = 1
-	if !exists('g:airline_symbols')
-	  let g:airline_symbols = {}
-	endif
-	let g:airline_symbols.space = "\ua0"
-
-	"display all buffers on top
-	let g:airline#extensions#tabline#enabled = 1
-	let g:airline#extensions#tabline#formatter = 'unique_tail'  "display only the filename for the buffers
-
-	"To make it work in Windows
-	set rop=type:directx,gamma:1.0,contrast:0.5,level:1,geom:1,renmode:4,taamode:1
-
-	"Set contant of Airline statusline C and Z
-	let g:airline_section_c='%f [%.3n]%m'			" %f=filename only %F=filename with path %.3n=buffer number %m=modified flag
-	let g:airline_section_z='%l:%c[%P]'				" line:column[position%]
-
-	"Státusz line variációk
+	"Older statusline settings
 		"set statusline=%<%F%h%m%r%h%w%y\ %{&ff}\ %{strftime(\"%c\",getftime(expand(\"%:p\")))}%=\ lin:%l\,%L\ col:%c%V\ pos:%o\ ascii:%b\ %P
 		"set statusline=%<%F%h%m%r%h%w%y\ [FORMAT=%{&ff}]\ %{strftime(\"%c\",getftime(expand(\"%:p\")))}%=\ lin:%l\,%L\ col:%c%V\ pos:%o\ ascii:%b\ %P
 		"set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strftime(\"%y.%m.%d\ -\ %H:%M:%S\")}
@@ -235,8 +165,16 @@
 		"set statusline=%f\ %=\ [%{strftime(\"%Y-%m-%d\ %H:%M\",getftime(expand(\"%:p\")))}]\ [%{&fileencoding?&fileencoding:&encoding}]\ [%-n]\ %m\ [%F]\ %=\ Lin[%l\/%L]\ Col[%c%V]\ %P
 		"set statusline=%f\ [%{strftime(\"%Y-%m-%d\ %H:%M\",getftime(expand(\"%:p\")))}]\ [%{&fileencoding?&fileencoding:&encoding}]\ [%-n]\ %m\ %=\ [%F]\ Lin[%l\/%L]\ Col[%c%V]\ %P
 "============================================================================================================
-"~~	UI settings ~~
+"~~	|UI settings| ~~
 "============================================================================================================
+	"Ha van lehetőség, akkor menüben mutatja meg a TAB utáni autocomplete lehetőségeket
+		set wildmenu 
+	"A wildmode-ban kiírja a lehetőségeket is függőleges menüben
+		"A longest azt csinálja, hogy csak az első ambiguitásig egészíti ki
+		"Vessző után a full pedig a második tabra már teljesen kiegészíti
+		set wildmode=list:longest,full
+	"Turns visual bell and beep off
+		set vb t_vb=
 	"A menük eltüntetése, csak a tab marad meg
 		set guioptions=ae
 		"set go-=T 
@@ -284,7 +222,7 @@
 		set sidescroll=1
 		set sidescrolloff=10
 "============================================================================================================
-"~~	KURZORMOZGATÁS, SZERKESZTLÉS MAPPINGEK ~~
+"~~	|Cursor Movement and Edit Mappings| ~~
 "============================================================================================================
 	"ESC gomb átmappolása
 		imap ii <Esc>
@@ -339,7 +277,34 @@
 	"Ctrl-A továbbra is növelje az alatta lévő számot. On Windows, your vimrc file may source mswin.vim or another script that maps Ctrl-A to Select All. 
 		:nunmap <C-a>
 "============================================================================================================
-"~~	TAB és WINDOWS ABLAK KEZELÉS ~~
+"~~	|Search and Substitute Settings| ~~
+"============================================================================================================
+	"Substitute kezdése egyszerűbben, automatikusan kieszképelve minden regexet
+		nnoremap <leader>s :%s,\v
+	"Keresés ne legyen betűérzékeny
+		set ignorecase 
+	"Ha csak kisbetűvel keresek, nem érzékeny, ha van benne nagybetű is, akkor igen.
+		set smartcase 
+	"Ha zárójelet nyitok, akkor egy pillanatra átugrik (a végére is), amikor bezártam
+		set showmatch 
+	"A keresési eredményeket már a keresés közben is mutatja a háttér kiemelésével
+		set hlsearch 
+	"Kiszedi a keresés kiemelését
+		noremap <leader><space> :noh<cr>:call clearmatches()<cr>
+	"Space-re keres előre, C-Space-re visszafelé, regexek very magicre állítva
+		"noremap <Space> /\v
+		"noremap <C-Space> ?\v
+	" Keep search matches in the middle of the window and pulse the line when moving to them.
+		nnoremap n nzzzv
+		nnoremap N Nzzzv
+	" Ugyanúgy automatikusan középre zoomol előző-következő change-re ugrásnál is
+	" Valamint felcseréli az előre-hátra haladást, az előző változtatás lesz a g,
+		"nnoremap g; g,zz
+		"nnoremap g, g;zz
+	"map to search the visually selected text
+		vnoremap // y/<C-R>"<CR>
+"============================================================================================================
+"~~	|Tab and Window Settings| ~~
 "============================================================================================================
 	"Tabkezeléshez tabváltás balra-jobbra CTRL H és L gombokkal, illetve "CTRL balra és jobbra nyilakkal
 		noremap <C-l> gt
@@ -381,7 +346,7 @@
 		set splitright
 		set splitbelow
 "============================================================================================================
-"~~	FUNKCIÓ BILLENTYŰ MAPPINGEK ~~
+"~~	|Function Key Mappings| ~~
 "============================================================================================================
 	"Buffer kilistázás és belépés választás módba
 		nnoremap <f1> :ls<cr>:b 
@@ -403,9 +368,8 @@
 		map <F9> :so $HOME\vimfiles\sessions\session.vim<cr>
 	"Opens a new tab
 		map <F10> :tabnew<cr>
-
 "============================================================================================================
-"~~	SESSION Settings ~~
+"~~	|Session Settings| ~~
 "============================================================================================================
 	"Function to save a session file to the specified folder
 	function! MakeSession()
@@ -435,10 +399,49 @@
 	"au VimEnter * nested :call LoadSession()
 	au VimLeave * :call MakeSession()
 "============================================================================================================
-"~~	EGYÉB BEÁLLÍTÁSOK ~~
+"~~	|FOLD Settings| ~~
+"============================================================================================================
+	" Sets foldmethod to indent
+		nnoremap <leader>fi :set foldmethod=indent<cr>
+	" Sets foldmethod to manualj
+		nnoremap <leader>fm :set foldmethod=manual<cr>
+	" always show folds
+		set foldcolumn=1
+	" Display folds with one rows 
+		set foldminlines=0
+"============================================================================================================
+"~~	|File, Backup, WorkDir, Shell, Encoding Settings| ~~
+"============================================================================================================
+	"Ide rakja a backupot, .un file-t és swap file-t pedig ne csináljon
+		set nobackup
+		set noswapfile
+		"set noundofile
+	"Mentés nélkül is lehessen buffert váltani
+		set hidden 
+	"A mappaváltással a PWD is automatikusan változik
+		set autochdir
+		noremap <leader>cdoff :set noautochdir<cr>
+	"Set character encoding - UTF-8 required for Airline
+		set encoding=utf-8
+	"To display proper special characters in Airline status
+		set guifont=Consolas
+	"Az aktuális fájl mappátját állítja be PWD-nek
+	  	nnoremap <Leader>cd :cd %:h<bar>pwd<cr>
+	" Reload file if it's modified outside
+		set autoread
+		set autowrite
+	"Set Powrshell as default shell
+	"Removed this option, because vimdiff did not work well in powershell
+		"set shell=powershell
+		"set shell=%SystemRoot%\syswow64\WindowsPowerShell\v1.0\powershell.exe
+		"set shellcmdflag=-Command
+	"Source
+		"http://juliankay.com/development/setting-up-vim-to-work-with-powershell/
+"============================================================================================================
+"~~	|Other Settings| ~~
 "============================================================================================================
 	"Start Gvim maximized
-	au GUIEnter * simalt ~m
+	"au GUIEnter * simalt ~m
 	"Ez a helpben fontos, eredetilega  CTRL-G az az aktulis fájl infoit mutatja.
 		noremap <C-g> <C-]>
 	"Timestamp beállítások
@@ -454,24 +457,17 @@
 		nmap <leader>d :s,\(^\s*\)!,\1+,e<cr>:noh<cr>
 		set magic
 		nmap <leader>dd :s,\(^\s*\)[+\|-],\1!,e<cr>:noh<cr>
+""============================================================================================================
+""~~ |CFSW Specific Settings| ~~
+""============================================================================================================
+	"Find FS/TS or FM/TM that was preceeded by exactly 38 any chars and followed by a whitespace - SVC and MVM flags on RT67, position 40
+	map <leader>svc /^.\{38}[FT][MS]\s<cr>	
+	map <F11> :tabnew ~\Box Sync\CFSW\CFSW Text Notes.txt<cr>
 "============================================================================================================
-"~~	FOLD beállítások
+"~~ |Changelog| ~~
 "============================================================================================================
-	" Sets foldmethod to indent
-		nnoremap <leader>fi :set foldmethod=indent<cr>
-	" Sets foldmethod to manualj
-		nnoremap <leader>fm :set foldmethod=manual<cr>
-	" always show folds
-		set foldcolumn=1
-	" Display folds with one rows 
-		set foldminlines=0
-"============================================================================================================
-"~~	SHELL Settings	 ~~
-"============================================================================================================
-	"Set Powrshell as default shell
-	"Removed this option, because vimdiff did not work well in powershell
-		"set shell=powershell
-		"set shell=%SystemRoot%\syswow64\WindowsPowerShell\v1.0\powershell.exe
-		"set shellcmdflag=-Command
-	"Source
-		"http://juliankay.com/development/setting-up-vim-to-work-with-powershell/
+	"2018-02-11 - Restructure & Rename sections
+	"2018-02-10 - Replaced Pathogen with Vundle and added multiple plugins (see under Vundle)
+	"2018-02-08 - changed background/foreground color of status line for cterm for better visual highlighting of the active buffer
+	"2017-11-17 - Commented out automatic saving when losing focus, set guifont=consolas added
+	"2017-10-22 - This vimrc is updated for Linux. The .vimrc file in ~ is a symbolic link to the original file in the mydotfiles github folder
