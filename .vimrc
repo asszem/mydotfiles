@@ -2,6 +2,8 @@
 "============================================================================================================
 "~~	|Diff Settings| ~~
 "============================================================================================================
+	"the encoding must be set at this point, otherwise Airline will break in GVim
+	set encoding=utf-8
 	"a ctrl-V átmappolása mielőtt az mswin.vim a rendszerszintű paste-t rakja be helyette
 	map <leader>v <c-q>
 	set nocompatible
@@ -135,6 +137,9 @@
 		:highlight Comment ctermfg=6
 		:highlight Folded ctermfg=0
 		:highlight diffChange ctermfg=11
+	"Color overrides for Molokai_dark
+		:highlight diffText gui=bold
+		:highlight LineNr guifg=gray
 "============================================================================================================
 "~~	|Statusline Settings| ~~
 "============================================================================================================
@@ -263,10 +268,10 @@
 		endif	
 	"Set the color for UndoTree add and change
 		if !exists('g:undotree_HighlightSyntaxAdd')
-			let g:undotree_HighlightSyntaxAdd = "SpellCap"
+			let g:undotree_HighlightSyntaxAdd = "DiffAdd"
 		endif
 		if !exists('g:undotree_HighlightSyntaxChange')
-			let g:undotree_HighlightSyntaxChange = "Title"
+			let g:undotree_HighlightSyntaxChange = "StatusLine"
 		endif 
 	"Dokumentum aljára ugrás
 		nnoremap <Leader>g G<cr>

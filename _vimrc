@@ -2,6 +2,8 @@
 "============================================================================================================
 "~~	|Diff Settings| ~~
 "============================================================================================================
+	"the encoding must be set at this point, otherwise Airline will break in GVim
+	set encoding=utf-8
 	"a ctrl-V átmappolása mielőtt az mswin.vim a rendszerszintű paste-t rakja be helyette
 	map <leader>v <c-q>
 	set nocompatible
@@ -99,13 +101,13 @@
 		"display all buffers on top
 		let g:airline#extensions#tabline#enabled = 1
 		let g:airline#extensions#tabline#formatter = 'unique_tail'  "display only the filename for the buffers
-		"To make it work in Windows
+		"Required for better performance for Gvim in Windows
 		set rop=type:directx,gamma:1.0,contrast:0.5,level:1,geom:1,renmode:4,taamode:1
 		"Set contant of Airline statusline C and Z
 		let g:airline_section_c='%f [%.3n]%m'			" %f=filename only %F=filename with path %.3n=buffer number %m=modified flag
 		let g:airline_section_z='%l:%c[%P]'				" line:column[position%]
 		"Set the airline theme 
-		let g:airline_theme='powerlineish'
+		"let g:airline_theme='powerlineish'
 "============================================================================================================
 "~~	|Mapleader Settings| ~~
 "============================================================================================================
@@ -130,11 +132,14 @@
 "~~ |Colors, Colorschemes| ~~
 "============================================================================================================
 	"Set color scheme
-		:color pablo
+		:color molokai_dark
 	"Color overrides for Pablo
 		:highlight Comment ctermfg=6
 		:highlight Folded ctermfg=0
 		:highlight diffChange ctermfg=11
+	"Color overrides for Molokai_dark
+		:highlight diffText gui=bold
+		:highlight LineNr guifg=gray
 "============================================================================================================
 "~~	|Statusline Settings| ~~
 "============================================================================================================
@@ -263,10 +268,10 @@
 		endif	
 	"Set the color for UndoTree add and change
 		if !exists('g:undotree_HighlightSyntaxAdd')
-			let g:undotree_HighlightSyntaxAdd = "SpellCap"
+			let g:undotree_HighlightSyntaxAdd = "DiffAdd"
 		endif
 		if !exists('g:undotree_HighlightSyntaxChange')
-			let g:undotree_HighlightSyntaxChange = "Title"
+			let g:undotree_HighlightSyntaxChange = "StatusLine"
 		endif 
 	"Dokumentum aljára ugrás
 		nnoremap <Leader>g G<cr>
@@ -421,10 +426,8 @@
 	"A mappaváltással a PWD is automatikusan változik
 		set autochdir
 		noremap <leader>cdoff :set noautochdir<cr>
-	"Set character encoding - UTF-8 required for Airline
-		set encoding=utf-8
 	"To display proper special characters in Airline status
-		set guifont=Consolas
+		set guifont=Droid_Sans_Mono_Slashed_for_Pow:h10:cEASTEUROPE:qDRAFT
 	"Az aktuális fájl mappátját állítja be PWD-nek
 	  	nnoremap <Leader>cd :cd %:h<bar>pwd<cr>
 	" Reload file if it's modified outside
@@ -441,7 +444,7 @@
 "~~	|Other Settings| ~~
 "============================================================================================================
 	"Start Gvim maximized
-	"au GUIEnter * simalt ~m
+	au GUIEnter * simalt ~m
 	"Ez a helpben fontos, eredetilega  CTRL-G az az aktulis fájl infoit mutatja.
 		noremap <C-g> <C-]>
 	"Timestamp beállítások
@@ -470,4 +473,3 @@
 	"2018-02-10 - Replaced Pathogen with Vundle and added multiple plugins (see under Vundle)
 	"2018-02-08 - changed background/foreground color of status line for cterm for better visual highlighting of the active buffer
 	"2017-11-17 - Commented out automatic saving when losing focus, set guifont=consolas added
-	"2017-10-22 - This vimrc is updated for Linux. The .vimrc file in ~ is a symbolic link to the original file in the mydotfiles github folder
