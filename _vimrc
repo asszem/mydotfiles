@@ -1,4 +1,4 @@
-"Last updated: 2018-02-11
+"Last updated: 2018-02-15
 "============================================================================================================
 "~~	|Diff Settings| ~~
 "============================================================================================================
@@ -101,6 +101,8 @@
 		"display all buffers on top
 		let g:airline#extensions#tabline#enabled = 1
 		let g:airline#extensions#tabline#formatter = 'unique_tail'  "display only the filename for the buffers
+		"let g:airline#extensions#tabline#buffer_idx_mode = 1 		"display the buffer numbers as well in the top tab row
+		let g:airline#extensions#tabline#buffer_nr_show = 1			"display the actual buffer number
 		"Required for better performance for Gvim in Windows
 		set rop=type:directx,gamma:1.0,contrast:0.5,level:1,geom:1,renmode:4,taamode:1
 		"Set contant of Airline statusline C and Z
@@ -115,7 +117,7 @@
 	"Toggle Nerdtree file manager with ,n 
 	map <leader>n :NERDTreeToggle<cr>
 	"Open the buffers list with ,b
-	map <leader>b :buffers<cr>
+	map <leader>b :CtrlPBuffer<cr>
 	"Opens the jumps list. Ctrl-o and Ctrl-i to jump
 	map <leader>j :jumps<cr>
 	":diffupdate
@@ -135,11 +137,12 @@
 		:color molokai_dark
 	"Color overrides for Pablo
 		:highlight Comment ctermfg=6
-		:highlight Folded ctermfg=0
+		:highlight Folded ctermfg=0 ctermbg=white
 		:highlight diffChange ctermfg=11
 	"Color overrides for Molokai_dark
 		:highlight diffText gui=bold
 		:highlight LineNr guifg=gray
+		:highlight Folded guibg=gray
 "============================================================================================================
 "~~	|Statusline Settings| ~~
 "============================================================================================================
@@ -465,10 +468,12 @@
 ""============================================================================================================
 	"Find FS/TS or FM/TM that was preceeded by exactly 38 any chars and followed by a whitespace - SVC and MVM flags on RT67, position 40
 	map <leader>svc /^.\{38}[FT][MS]\s<cr>	
-	map <F11> :tabnew ~\Box Sync\CFSW\CFSW Text Notes.txt<cr>
+	map <F10> :tabnew
+	map <F12> :tabnew ~\Box Sync\CFSW\CFSW Notes\CFSWTodo.txt<cr>
 "============================================================================================================
 "~~ |Changelog| ~~
 "============================================================================================================
+	"2018-02-15 - Fix Folded guibg, setup CFSWTest for F12, CtrlPBuffer for leader b
 	"2018-02-11 - Restructure & Rename sections
 	"2018-02-10 - Replaced Pathogen with Vundle and added multiple plugins (see under Vundle)
 	"2018-02-08 - changed background/foreground color of status line for cterm for better visual highlighting of the active buffer

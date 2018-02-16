@@ -9,6 +9,9 @@ alias cd..="cd .."
 alias dir="ls -la"
 alias work='cd c:/at/UIAutomation'
 alias personal='cd c:/java/GitHub'
+alias killgecko='/c/Users/IBM_ADMIN/Box\ Sync/WinScripts/killgecko.bat'
+alias kg='/c/Users/IBM_ADMIN/Box\ Sync/WinScripts/killgecko.bat'
+alias copyconfig='/c/Users/IBM_ADMIN/Box\ Sync/WinScripts/copyConfig.bat'
 
 
 #  SETUP CONSTANTS
