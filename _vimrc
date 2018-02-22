@@ -1,4 +1,4 @@
-"Last updated: 2018-02-15
+"Last updated: 2018-02-22
 "============================================================================================================
 "~~	|Diff Settings| ~~
 "============================================================================================================
@@ -142,7 +142,7 @@
 	"Color overrides for Molokai_dark
 		:highlight diffText gui=bold
 		:highlight LineNr guifg=gray
-		:highlight Folded guibg=gray
+		:highlight Folded guibg=gray22 guifg=cyan
 "============================================================================================================
 "~~	|Statusline Settings| ~~
 "============================================================================================================
@@ -468,11 +468,12 @@
 ""============================================================================================================
 	"Find FS/TS or FM/TM that was preceeded by exactly 38 any chars and followed by a whitespace - SVC and MVM flags on RT67, position 40
 	map <leader>svc /^.\{38}[FT][MS]\s<cr>	
-	map <F10> :tabnew
+	map <F10> :tabnew<cr>
 	map <F12> :tabnew ~\Box Sync\CFSW\CFSW Notes\CFSWTodo.txt<cr>
 "============================================================================================================
 "~~ |Changelog| ~~
 "============================================================================================================
+	"2018-02-22 - Fix Folded guifg as well, add missing <CR> to F10
 	"2018-02-15 - Fix Folded guibg, setup CFSWTest for F12, CtrlPBuffer for leader b
 	"2018-02-11 - Restructure & Rename sections
 	"2018-02-10 - Replaced Pathogen with Vundle and added multiple plugins (see under Vundle)
