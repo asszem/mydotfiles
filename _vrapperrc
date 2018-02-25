@@ -70,7 +70,7 @@ nnoremap <leader>gi :eclipsegotoimpl<cr>
 eclipseuiaction eclipsetypehier org.eclipse.jdt.ui.edit.text.java.open.hierarchy
 nnoremap <leader>th :eclipsetypehier<cr>
 
-" go to type
+" go to type - make sure gt is not remapped as it is used for NEXT TAB
 eclipseuiaction eclipsegototype org.eclipse.jdt.ui.navigate.open.type
-nnoremap gt :eclipsegototype<cr>
+nnoremap <leader>gt :eclipsegototype<cr>
 
