@@ -1,4 +1,4 @@
-"Last updated: 2018-02-11
+"Last updated: 2018-02-26
 "============================================================================================================
 "~~	|Diff Settings| ~~
 "============================================================================================================
@@ -115,11 +115,9 @@
 	"Toggle Nerdtree file manager with ,n 
 	map <leader>n :NERDTreeToggle<cr>
 	"Open the buffers list with ,b
-	map <leader>b :buffers<cr>
+	map <leader>b :CtrlPBuffer<cr>
 	"Opens the jumps list. Ctrl-o and Ctrl-i to jump
 	map <leader>j :jumps<cr>
-	":diffupdate
-	map <leader>du :diffupdate<cr>
 	"jumps backward on the changes list - to the PREVIUS change
 	map <leader>c g;
 	"jumps forward to the changes list - to the NEXT change
@@ -128,6 +126,16 @@
 	map <leader>w :windo set wrap<cr>
 	"fugitive git status
 	map <leader>gs :Gstatus<cr>
+	":diffupdate
+	map <leader>du :diffupdate<cr>
+	map <leader>gs :Gstatus<cr>
+	"Diff Merge jump to Diff Head or Diff Local
+	map <leader>dh /<<<<<<<<cr>
+	map <leader>dl /<<<<<<<<cr>
+	"Diff Merge jump to Diff Base
+	map <leader>db /\|\|\|\|\|\|\|<cr> 
+	"Diff Merge jump to Diff Remote
+	map <leader>dr />>>>>>><cr>
 "============================================================================================================
 "~~ |Colors, Colorschemes| ~~
 "============================================================================================================
@@ -140,6 +148,7 @@
 	"Color overrides for Molokai_dark
 		:highlight diffText gui=bold
 		:highlight LineNr guifg=gray
+		:highlight Folded guibg=gray22 guifg=cyan
 "============================================================================================================
 "~~	|Statusline Settings| ~~
 "============================================================================================================
@@ -465,6 +474,7 @@
 "============================================================================================================
 "~~ |Changelog| ~~
 "============================================================================================================
+	"2018-02-26 - Add <leader>dh DiffHead, <leader>dl DiffLocal <leader>db DiffBase <leader>dr DiffRemote
 	"2018-02-11 - Restructure & Rename sections
 	"2018-02-10 - Replaced Pathogen with Vundle and added multiple plugins (see under Vundle)
 	"2017-10-22 - This vimrc is updated for Linux. The .vimrc file in ~ is a symbolic link to the original file in the mydotfiles github folder

@@ -1,4 +1,4 @@
-"Last updated: 2018-02-22
+"Last updated: 2018-02-26
 "============================================================================================================
 "~~	|Diff Settings| ~~
 "============================================================================================================
@@ -120,8 +120,6 @@
 	map <leader>b :CtrlPBuffer<cr>
 	"Opens the jumps list. Ctrl-o and Ctrl-i to jump
 	map <leader>j :jumps<cr>
-	":diffupdate
-	map <leader>du :diffupdate<cr>
 	"jumps backward on the changes list - to the PREVIUS change
 	map <leader>c g;
 	"jumps forward to the changes list - to the NEXT change
@@ -130,6 +128,16 @@
 	map <leader>w :windo set wrap<cr>
 	"fugitive git status
 	map <leader>gs :Gstatus<cr>
+	":diffupdate
+	map <leader>du :diffupdate<cr>
+	map <leader>gs :Gstatus<cr>
+	"Diff Merge jump to Diff Head or Diff Local
+	map <leader>dh /<<<<<<<<cr>
+	map <leader>dl /<<<<<<<<cr>
+	"Diff Merge jump to Diff Base
+	map <leader>db /\|\|\|\|\|\|\|<cr> 
+	"Diff Merge jump to Diff Remote
+	map <leader>dr />>>>>>><cr>
 "============================================================================================================
 "~~ |Colors, Colorschemes| ~~
 "============================================================================================================
@@ -473,6 +481,7 @@
 "============================================================================================================
 "~~ |Changelog| ~~
 "============================================================================================================
+	"2018-02-26 - Add <leader>dh DiffHead, <leader>dl DiffLocal <leader>db DiffBase <leader>dr DiffRemote
 	"2018-02-22 - Fix Folded guifg as well, add missing <CR> to F10
 	"2018-02-15 - Fix Folded guibg, setup CFSWTest for F12, CtrlPBuffer for leader b
 	"2018-02-11 - Restructure & Rename sections
