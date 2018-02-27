@@ -1,4 +1,4 @@
-"Last updated: 2018-02-26
+"Last updated: 2018-02-27
 "============================================================================================================
 "~~	|Diff Settings| ~~
 "============================================================================================================
@@ -101,41 +101,71 @@
 		"display all buffers on top
 		let g:airline#extensions#tabline#enabled = 1
 		let g:airline#extensions#tabline#formatter = 'unique_tail'  "display only the filename for the buffers
-		"To make it work in Windows
-		set rop=type:directx,gamma:1.0,contrast:0.5,level:1,geom:1,renmode:4,taamode:1
-		"Set contant of Airline statusline C and Z
+		"set rop=type:directx,gamma:1.0,contrast:0.5,level:1,geom:1,renmode:4,taamode:1
+		"Set content of Airline statusline C and Z
 		let g:airline_section_c='%f [%.3n]%m'			" %f=filename only %F=filename with path %.3n=buffer number %m=modified flag
 		let g:airline_section_z='%l:%c[%P]'				" line:column[position%]
 		"Set the airline theme 
-		let g:airline_theme='powerlineish'
 "============================================================================================================
 "~~	|Mapleader Settings| ~~
 "============================================================================================================
-	let mapleader=","
+	"Sets the leader key to ,
+		let mapleader=","
 	"Toggle Nerdtree file manager with ,n 
-	map <leader>n :NERDTreeToggle<cr>
+		map <leader>n :NERDTreeToggle<cr>
 	"Open the buffers list with ,b
-	map <leader>b :CtrlPBuffer<cr>
+		map <leader>b :CtrlPBuffer<cr>
+	" ,bl buffers-list kombóra is beállítom, meglátjuk idővel
+	" melyiket lesz kényelmesebb használni
+		nnoremap <Leader>bl :ls!<cr>:b 
 	"Opens the jumps list. Ctrl-o and Ctrl-i to jump
-	map <leader>j :jumps<cr>
+		map <leader>j :jumps<cr>
 	"jumps backward on the changes list - to the PREVIUS change
-	map <leader>c g;
+		map <leader>c g;
 	"jumps forward to the changes list - to the NEXT change
-	map <leader>C g,
+		map <leader>C g,
 	"turns on word wrap for every open buffer
-	map <leader>w :windo set wrap<cr>
-	"fugitive git status
-	map <leader>gs :Gstatus<cr>
-	":diffupdate
-	map <leader>du :diffupdate<cr>
-	map <leader>gs :Gstatus<cr>
+		map <leader>ww :windo set wrap<cr>
+	"turns off word wrap for every open buffer
+		map <leader>wnw :windo set nowrap<cr>
+	"Diff update az adott ablakban
+		map <leader>du :diffupdate<cr>
+	"Diff update in every open window
+		map <leader>dwu: :windo diffupdate<cr>
+	"Diff this window
+		map <leader>dt :diffthis<cr>
+	"Diff every window
+		map <leader>dwt :windo diffthis<cr>
+	"Diff off this window
+		map <leader>do :diffoff<cr>
+	"Diff off every buffer in open window
+		map <leader>dwo :windo diffoff<cr>
 	"Diff Merge jump to Diff Head or Diff Local
-	map <leader>dh /<<<<<<<<cr>
-	map <leader>dl /<<<<<<<<cr>
+		map <leader>dh /<<<<<<<<cr>
+		map <leader>dl /<<<<<<<<cr>
 	"Diff Merge jump to Diff Base
-	map <leader>db /\|\|\|\|\|\|\|<cr> 
+		map <leader>db /\|\|\|\|\|\|\|<cr> 
 	"Diff Merge jump to Diff Remote
-	map <leader>dr />>>>>>><cr>
+		map <leader>dr />>>>>>><cr>
+	"Dokumentum aljára ugrás
+		nnoremap <Leader>g G<cr>
+	"marks-ra ugrás
+		nnoremap <Leader>m '
+	"marksok mutatása
+		nnoremap <Leader>ma :marks<cr>
+	"Timestamp beállítások
+		"nmap <leader>ts A<C-R>=strftime(" [%m.%d. %H:%M:%S]")<CR><Esc>
+		"nmap <leader>tl A<C-R>=strftime(" [%Y.%m.%d. %A \| %H:%M:%S]")<CR><Esc>
+		"nmap <leader>td O<C-R>=strftime("%Y.%m.%d.")<CR><Esc>
+	"Az aktuális pozíciótól törli a tartalmat és új timestampot
+	"szúr be (timestamp long UPDATE)
+		"nmap <leader>tlu C<C-R>=strftime("[%Y.%m.%d. %A \| %H:%M:%S]")<CR><Esc>
+	"ToDo listhez 
+		" ,d a sor elejét +ra alakítja (DONE)
+		" ,dd a sor elejét !-ra alakítja ("Don'tDone")
+		"nmap <leader>d :s,\(^\s*\)!,\1+,e<cr>:noh<cr>
+		"set magic
+		"nmap <leader>dd :s,\(^\s*\)[+\|-],\1!,e<cr>:noh<cr>
 "============================================================================================================
 "~~ |Colors, Colorschemes| ~~
 "============================================================================================================
@@ -282,12 +312,6 @@
 		if !exists('g:undotree_HighlightSyntaxChange')
 			let g:undotree_HighlightSyntaxChange = "StatusLine"
 		endif 
-	"Dokumentum aljára ugrás
-		nnoremap <Leader>g G<cr>
-	"marks-ra ugrás
-		nnoremap <Leader>m '
-	"marksok mutatása
-		nnoremap <Leader>ma :marks<cr>
 	"Ctrl-A továbbra is növelje az alatta lévő számot. On Windows, your vimrc file may source mswin.vim or another script that maps Ctrl-A to Select All. 
 		:nunmap <C-a>
 "============================================================================================================
@@ -336,11 +360,6 @@
 	"Ha a <tab>-ot átmappolom, akkor a <c-i> sem fog működni, ami a jumplisten ugráláshoz kell, mert ez a kettő valamiért össze van kötve!
 		"nnoremap <tab> <c-w>w
 		"nnoremap <s-tab> <c-w>W
-	"Ablakkezelés mapleaderekkel
-	"	nnoremap <Leader>h <C-w>h
-	"	nnoremap <Leader>l <C-w>l
-	"	nnoremap <Leader>j <C-w>j
-	"	nnoremap <Leader>k <C-w>k
 	" ALT-HJKL is ablakok között váltogat
 		nnoremap <m-h> <c-w>h
 		nnoremap <m-l> <C-w>l
@@ -364,9 +383,6 @@
 "============================================================================================================
 	"Buffer kilistázás és belépés választás módba
 		nnoremap <f1> :ls<cr>:b 
-		" ,bl buffers-list kombóra is beállítom, meglátjuk idővel
-		" melyiket lesz kényelmesebb használni
-		nnoremap <Leader>bl :ls!<cr>:b 
 	"Alternatív (előzőleg megnyitott) buferre vált
 		nnoremap <F2> :b#<cr>
 	"Bufferek között vált F4-F3-ra
@@ -435,8 +451,6 @@
 	"A mappaváltással a PWD is automatikusan változik
 		set autochdir
 		noremap <leader>cdoff :set noautochdir<cr>
-	"Set character encoding - UTF-8 required for Airline
-		set encoding=utf-8
 	"To display proper special characters in Airline status
 		set guifont=Consolas
 	"Az aktuális fájl mappátját állítja be PWD-nek
@@ -458,22 +472,11 @@
 	"au GUIEnter * simalt ~m
 	"Ez a helpben fontos, eredetilega  CTRL-G az az aktulis fájl infoit mutatja.
 		noremap <C-g> <C-]>
-	"Timestamp beállítások
-		nmap <leader>ts A<C-R>=strftime(" [%m.%d. %H:%M:%S]")<CR><Esc>
-		nmap <leader>tl A<C-R>=strftime(" [%Y.%m.%d. %A \| %H:%M:%S]")<CR><Esc>
-		nmap <leader>td O<C-R>=strftime("%Y.%m.%d.")<CR><Esc>
-		"Az aktuális pozíciótól törli a tartalmat és új timestampot
-		"szúr be (timestamp long UPDATE)
-		nmap <leader>tlu C<C-R>=strftime("[%Y.%m.%d. %A \| %H:%M:%S]")<CR><Esc>
-	"ToDo listhez 
-		" ,d a sor elejét +ra alakítja (DONE)
-		" ,dd a sor elejét !-ra alakítja ("Don'tDone")
-		nmap <leader>d :s,\(^\s*\)!,\1+,e<cr>:noh<cr>
-		set magic
-		nmap <leader>dd :s,\(^\s*\)[+\|-],\1!,e<cr>:noh<cr>
+	set textwidth=0
 "============================================================================================================
 "~~ |Changelog| ~~
 "============================================================================================================
+	"2018-02-27 - Collect all <leader> settings under one section, set Diff leaders
 	"2018-02-26 - Add <leader>dh DiffHead, <leader>dl DiffLocal <leader>db DiffBase <leader>dr DiffRemote
 	"2018-02-11 - Restructure & Rename sections
 	"2018-02-10 - Replaced Pathogen with Vundle and added multiple plugins (see under Vundle)
