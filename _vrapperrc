@@ -3,6 +3,7 @@ map <c-h> gT
 map <c-l> gt
 map H ^
 map L $
+map :W :w<cr>
 set autoindent
 set ignorecase
 set smartcase
