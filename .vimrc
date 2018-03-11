@@ -1,4 +1,4 @@
-"Last updated: 2018-02-27
+"Last updated: 2018-03-02
 "============================================================================================================
 "~~	|Diff Settings| ~~
 "============================================================================================================
@@ -111,6 +111,8 @@
 "============================================================================================================
 	"Sets the leader key to ,
 		let mapleader=","
+	"Set textwidht=0 because it needs to be set manually every time
+		map <leader>t :set textwidth=0<cr>
 	"Toggle Nerdtree file manager with ,n 
 		map <leader>n :NERDTreeToggle<cr>
 	"Open the buffers list with ,b
@@ -132,14 +134,17 @@
 		map <leader>du :diffupdate<cr>
 	"Diff update in every open window
 		map <leader>dwu: :windo diffupdate<cr>
+		map <leader>wdu: :windo diffupdate<cr>
 	"Diff this window
 		map <leader>dt :diffthis<cr>
 	"Diff every window
 		map <leader>dwt :windo diffthis<cr>
+		map <leader>wdt :windo diffthis<cr>
 	"Diff off this window
 		map <leader>do :diffoff<cr>
 	"Diff off every buffer in open window
 		map <leader>dwo :windo diffoff<cr>
+		map <leader>wdo :windo diffoff<cr>
 	"Diff Merge jump to Diff Head or Diff Local
 		map <leader>dh /<<<<<<<<cr>
 		map <leader>dl /<<<<<<<<cr>
@@ -476,6 +481,7 @@
 "============================================================================================================
 "~~ |Changelog| ~~
 "============================================================================================================
+	"2018-03-02	- Add ,wdt ,wdu, wdo mappings as well as an alternative so it will be easier to remember
 	"2018-02-27 - Collect all <leader> settings under one section, set Diff leaders
 	"2018-02-26 - Add <leader>dh DiffHead, <leader>dl DiffLocal <leader>db DiffBase <leader>dr DiffRemote
 	"2018-02-11 - Restructure & Rename sections
