@@ -1,15 +1,44 @@
 {
-    "vim.leader": ",",
-    "vim.easymotion": true,
-    "vim.sneak": true,
-    "vim.incsearch": true,
-    "vim.useSystemClipboard": true,
-    "vim.useCtrlKeys": true,
-    "vim.hlsearch": true,
-    "vim.insertModeKeyBindings": [
-        {
-            "before": ["j","k"],
-            "after": ["<Esc>"]
-        }
-    ],
+  "**/*.jsmap": true,
+  "**/*.js": { "when": "$(basename).ts" },
+  "editor.wordWrap": "on",
+  "vim.hlsearch": true,
+  "vim.leader": ",",
+  "vim.handleKeys": {
+    "<C-d>": true,
+    "<C-k>": false
+  },
+  "vim.easymotion": true,
+  "vim.insertModeKeyBindings": [
+    {
+      "before": ["j", "k"],
+      "after": ["<Esc>"]
+    }
+  ],
+  "vim.otherModesKeyBindings": [
+    {
+      "before": ["L"],
+      "after": ["$"]
+    },
+    {
+      "before": ["H"],
+      "after": ["_"]
+    },
+    {
+      "before": ["j"],
+      "after": ["g","j"]
+    },
+    {
+      "before": ["k"],
+      "after": ["g","k"]
+    }
+  ],
+  "vim.cmdLineInitialColon": true,
+  "vim.useSystemClipboard": true,
+  "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
+  "window.menuBarVisibility": "default",
+  "editor.renderControlCharacters": true,
+  "window.zoomLevel": -1,
+  "workbench.activityBar.visible": true,
+  "editor.multiCursorModifier": "alt"
 }
