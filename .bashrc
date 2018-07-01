@@ -1,18 +1,22 @@
-#alias gvim='C:\Program Files (x86)\Vim\vim80\gvim.exe'
+#.bashrc for Windows
+# prompt setings for Git Bash is in file 'git-promt.sh' located in 'C:\Program Files\Git\etc\profile.d'
+
+
 #http://blog.albertarmea.com/post/115102365718/using-gvim-from-git-bash
-#alias vim='/c/Program\ Files\ \(x86\)/Vim/vim80/gvim.exe'
+
 alias view='/c/Program\ Files\ \(x86\)/Vim/vim80/gvim.exe -R'
-#alias vimdiff='/c/Program\ Files\ \(x86\)/Vim/vim80/gvim.exe -d'
-alias gvim='/c/Program\ Files\ \(x86\)/Vim/vim80/gvim.exe'
+#alias vim='/c/Program\ Files\ \(x86\)/Vim/vim80/gvim.exe'
+
 alias gvimdiff='/c/Program\ Files\ \(x86\)/Vim/vim80/gvim.exe -d'
+#alias vimdiff='/c/Program\ Files\ \(x86\)/Vim/vim80/gvim.exe -d'
+
+alias gvim='/c/Program\ Files\ \(x86\)/Vim/vim80/gvim.exe'
+#alias gvim='C:\Program Files (x86)\Vim\vim80\gvim.exe'
+
 alias cd..="cd .."
 alias dir="ls -la"
-alias work="cd 'C:\GitHubIBM\UIAutomation'"
-alias personal='cd C:\GitHubPersonal'
-alias killgecko='/c/Users/IBM_ADMIN/Box\ Sync/WinScripts/killgecko.bat'
-alias kg='/c/Users/IBM_ADMIN/Box\ Sync/WinScripts/killgecko.bat'
-alias copyconfig='/c/Users/IBM_ADMIN/Box\ Sync/WinScripts/copyConfig.bat'
 
+source ~/goto/goto.bash
 
 #  SETUP CONSTANTS
 #Source:

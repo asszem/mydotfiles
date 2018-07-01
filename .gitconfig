@@ -9,6 +9,7 @@
 	email = asszem78@gmail.com
 [core]
 	editor = 'C:\\Program Files (x86)\\Vim\\vim80\\gvim.exe'  -f -i NONE
+	autocrlf = false 
 [alias]
 	last = log -1 HEAD
 	logf = log --pretty=format:\"%h - %an, %ar : %s\"
@@ -41,5 +42,5 @@
 	guitool = gvimdiff
 
 [merge]
-	tool = gvimdiff
+	tool = vimdiff
 	conflictstyle = diff3

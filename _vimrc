@@ -1,4 +1,4 @@
-"Last updated: 2018-03-02
+"Last updated: 2018-07-01
 "============================================================================================================
 "~~	|Diff Settings| ~~
 "============================================================================================================
@@ -67,6 +67,7 @@
 	Plugin 'mhinz/vim-signify'
 	Plugin 'mhinz/vim-startify'
 	Plugin 'mbbill/undotree'
+	Plugin 'justinmk/vim-sneak'
 
 	" All of your Plugins must be added before the following line
 	call vundle#end()            " required
@@ -74,13 +75,25 @@
 "============================================================================================================
 "~~	|Plugin Specific Settings| ~~
 "============================================================================================================
+	"|Sneak|
+		"Enable easymotion-like labeling
+		let g:sneak#streak = 1
+		let g:sneak#target_labels = "asdfghjkl;qwertyuiopzxcvbnm/ASDFGHJKL:QWERTYUIOPZXCVBNM?"
+		"Press s or S again to go next/previous match until cursor movement. ; and , works as well
+		let g:sneak#s_next = 1
+		let g:sneak#prompt = 'Sneak>'
+		"remap fF and tT to Sneak
+		map f <Plug>Sneak_f
+		map F <Plug>Sneak_F
+		map t <Plug>Sneak_t
+		map T <Plug>Sneak_T
 	"|Easymotion|
-		"Set EasyMotion trigger key
+		"Set EasyMotion general trigger key
 		nmap <space> <Plug>(easymotion-prefix)
-		"Set multicharacter search
+		"Set multicharacter search trigger key
 		nmap <CR> <Plug>(easymotion-sn)
 		"Use easymotion bi-directional single character find motion
-		nmap <s> <Plug>(easymotion-overwin-f)
+		"nmap <s> <Plug>(easymotion-overwin-f)
 	"|Nerdtree|
 		"always show the bookmarks 
 		let NERDTreeShowBookmarks=1 
@@ -92,21 +105,26 @@
 		let g:ctrlp_cmd = 'CtrlPMRU'
 		"http://ctrlpvim.github.io/ctrlp.vim/#installation"
 	"|Airline|
-		"use special characters in statusline
+		"Use special characters in statusline
 		let g:airline_powerline_fonts = 1
 		if !exists('g:airline_symbols')
 		  let g:airline_symbols = {}
 		endif
 		let g:airline_symbols.space = "\ua0"
-		"display all buffers on top
-		let g:airline#extensions#tabline#enabled = 1
-		let g:airline#extensions#tabline#formatter = 'unique_tail'  "display only the filename for the buffers
-		"let g:airline#extensions#tabline#buffer_idx_mode = 1 		"display the buffer numbers as well in the top tab row
-		let g:airline#extensions#tabline#buffer_nr_show = 1			"display the actual buffer number
+		"Tabline settings
+		let g:airline#extensions#tabline#enabled = 1							"enable the tabline on top
+		let g:airline#extensions#tabline#formatter = 'unique_tail_improved' 	"display only the filename for the buffers
+  		let g:airline#extensions#tabline#tab_nr_type = 1 						"display the tab number
+		let g:airline#extensions#tabline#fnamemod = ':p:~' 						"configure the formatting of filenames (see |filename-modifiers|). >
+		let g:airline#extensions#tabline#fnamecollapse=0 						"configure collapsing parent directories in buffer name. >
+		let g:airline#extensions#tabline#fnametruncate=0 						"configure truncating non-active buffer names to specified length.
+		"let g:airline#extensions#tabline#buffer_idx_mode = 1 					"display the buffer numbers as well in the top tab row
+		"let g:airline#extensions#tabline#buffer_nr_show = 1					"display the actual buffer number
 		"Required for better performance for Gvim in Windows
 		set rop=type:directx,gamma:1.0,contrast:0.5,level:1,geom:1,renmode:4,taamode:1
 		"Set content of Airline statusline C and Z
-		let g:airline_section_c='%f [%.3n]%m'			" %f=filename only %F=filename with path %.3n=buffer number %m=modified flag
+		let g:airline_section_c='%F [%.3n]%m'			" %f=filename only %F=filename with path %.3n=buffer number %m=modified flag
+		"let g:airline_section_c='%f [%.3n]%m'			" %f=filename only %F=filename with path %.3n=buffer number %m=modified flag
 		let g:airline_section_z='%l:%c[%P]'				" line:column[position%]
 		"Set the airline theme 
 "============================================================================================================
@@ -491,6 +509,7 @@
 "============================================================================================================
 "~~ |Changelog| ~~
 "============================================================================================================
+	"2018-07-01 - Update Airline tabline (display tab number, hide buffer number) and status line (display full file path), add Sneak plugin
 	"2018-03-02	- Add ,wdt ,wdu, wdo mappings as well as an alternative so it will be easier to remember
 	"2018-02-27 - Collect all <leader> settings under one section, set Diff leaders
 	"2018-02-26 - Add <leader>dh DiffHead, <leader>dl DiffLocal <leader>db DiffBase <leader>dr DiffRemote

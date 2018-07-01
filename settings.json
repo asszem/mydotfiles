@@ -1,6 +1,8 @@
 {
   "**/*.jsmap": true,
-  "**/*.js": { "when": "$(basename).ts" },
+  "**/*.js": {
+    "when": "$(basename).ts"
+  },
   "editor.wordWrap": "on",
   "vim.hlsearch": true,
   "vim.leader": ",",
@@ -9,36 +11,80 @@
     "<C-k>": false
   },
   "vim.easymotion": true,
+  "vim.sneak":true,
   "vim.insertModeKeyBindings": [
     {
-      "before": ["j", "k"],
-      "after": ["<Esc>"]
+      "before": [
+        "j",
+        "k"
+      ],
+      "after": [
+        "<Esc>"
+      ]
     }
   ],
-  "vim.otherModesKeyBindings": [
+  "vim.normalModeKeyBindings": [
     {
-      "before": ["L"],
-      "after": ["$"]
+      "before": [
+        "<C-n>"
+      ],
+      "commands": [
+        {
+          "command": ":nohl"
+        }
+      ]
     },
     {
-      "before": ["H"],
-      "after": ["_"]
+      "before": [
+        "<Enter>"
+      ],
+      "after": [
+        "/"
+      ]
     },
     {
-      "before": ["j"],
-      "after": ["g","j"]
+      "before": [
+        "L"
+      ],
+      "after": [
+        "$"
+      ]
     },
     {
-      "before": ["k"],
-      "after": ["g","k"]
+      "before": [
+        "H"
+      ],
+      "after": [
+        "_"
+      ]
+    },
+    {
+      "before": [
+        "j"
+      ],
+      "after": [
+        "g",
+        "j"
+      ]
+    },
+    {
+      "before": [
+        "k"
+      ],
+      "after": [
+        "g",
+        "k"
+      ]
     }
   ],
-  "vim.cmdLineInitialColon": true,
   "vim.useSystemClipboard": true,
   "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
   "window.menuBarVisibility": "default",
   "editor.renderControlCharacters": true,
-  "window.zoomLevel": -1,
+  "window.zoomLevel": 0,
   "workbench.activityBar.visible": true,
-  "editor.multiCursorModifier": "alt"
+  "editor.multiCursorModifier": "alt",
+  "workbench.iconTheme": "vscode-icons",
+  "vsicons.projectDetection.autoReload": true,
+  "vim.foldfix": true
 }
