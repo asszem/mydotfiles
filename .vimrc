@@ -1,4 +1,4 @@
-"Last updated: 2018-07-01
+"Last updated: 2018-07-15
 "============================================================================================================
 "~~	|Diff Settings| ~~
 "============================================================================================================
@@ -497,11 +497,23 @@
 	"Start Gvim maximized
 	"au GUIEnter * simalt ~m
 	"Ez a helpben fontos, eredetilega  CTRL-G az az aktulis fájl infoit mutatja.
-		noremap <C-g> <C-]>
+		"noremap <C-g> <C-]>
 	set textwidth=0
+	" Set the cursor shape and color for vim (not gvim)
+	" http://vim.wikia.com/wiki/Configuring_the_cursor
+	if &term =~ "xterm\\|rxvt"
+	  " use an orange cursor in insert mode
+	  let &t_SI = "\<Esc>[3 q\<Esc>]12;orange\x7"
+	  " use a red cursor otherwise
+	  let &t_EI = "\<Esc>[0 q\<Esc>]12;red\x7"
+	  silent !echo -ne "\033]12;red\007"
+	  " reset cursor when vim exits
+	   autocmd VimLeave * silent !echo -ne "\033]112\007"
+	endif
 "============================================================================================================
 "~~ |Changelog| ~~
 "============================================================================================================
+	"2017-07-15 - Add cursor color and shape settings for xterm mode (not for gvim)
 	"2018-07-01 - Update Airline tabline (display tab number, hide buffer number) and status line (display full file path), add Sneak plugin
 	"2018-03-02	- Add ,wdt ,wdu, wdo mappings as well as an alternative so it will be easier to remember
 	"2018-02-27 - Collect all <leader> settings under one section, set Diff leaders

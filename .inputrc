@@ -1,0 +1,43 @@
+# Enable vi mode in Bash
+set editing-mode vi
+# Start bash in command mode
+set keymap vi-command
+#show whether in command or in insert mode
+set show-mode-in-prompt on
+# Change the promt and cursor depending on mode
+# Blinking block cursor and red prompt text in command mode
+set vi-cmd-mode-string \1\e[2 q\e[1;31m\2[CMD]
+# Blinking bar cursor in insert mode
+set vi-ins-mode-string \1\e[5 q\2[INS]
+# Fallback on blinking cursors
+#set vi-ins-mode-string \1\e[5 q\2
+#set vi-cmd-mode-string \1\e[2 q\2
+#More info on color modes
+#https://unix.stackexchange.com/questions/148/colorizing-your-terminal-and-shell-environment
+#https://stackoverflow.com/questions/7888387/the-way-to-distinguish-command-mode-and-insert-mode-in-bashs-vi-command-line-ed
+TAB: menu-complete
+#set show-all-if-ambiguous on
+set completion-ignore-case on
+# Remap vi keys 
+$if mode=vi                
+    # Normal mode                           
+    set keymap vi-command                                 
+    "H": beginning-of-line
+    "L": end-of-line
+    "G": end-of-history
+	"gg": beginning-of-history
+    # insert mode             
+    set keymap vi-insert                          
+	# Switch to block cursor before executing a command
+	RETURN: "\e\n"
+	# Remap escape   
+    "jk": vi-movement-mode 
+	# Remap standard bash shortcuts so that will work in insert mode
+	"\C-e": end-of-line
+	"\C-a": beginning-of-line
+	"\C-l": end-of-line
+	"\C-h": beginning-of-line
+	"\C-w": backward-kill-word
+	"\C-p": history-search-backward
+$endif 
+# For more info: man bash, search for Commands for Moving
