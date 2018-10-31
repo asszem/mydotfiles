@@ -1,4 +1,4 @@
-"Last updated: 2018-07-01
+"Last updated: 2018-10-28
 "============================================================================================================
 "~~	|Diff Settings| ~~
 "============================================================================================================
@@ -41,7 +41,7 @@
 "============================================================================================================
 "~~	|Vundle Plugin Configurations| ~~
 "============================================================================================================
-	set nocompatible              " be iMproved, required
+	set nocompatible              " be iMproved, require
 	filetype off                  " required
 
 	" set the runtime path to include Vundle and initialize
@@ -60,14 +60,14 @@
 	Plugin 'Xuyuanp/nerdtree-git-plugin'
 	Plugin 'vim-airline/vim-airline'
 	Plugin 'vim-airline/vim-airline-themes'
-	Plugin 'easymotion/vim-easymotion'
 	Plugin 'powerline/powerline-fonts'
 	Plugin 'flazz/vim-colorschemes'
-	"Plugin 'airblade/vim-gitgutter'
 	Plugin 'mhinz/vim-signify'
 	Plugin 'mhinz/vim-startify'
 	Plugin 'mbbill/undotree'
-	Plugin 'justinmk/vim-sneak'
+	"Plugin 'easymotion/vim-easymotion'
+	"Plugin 'justinmk/vim-sneak'
+	"Plugin 'airblade/vim-gitgutter'
 
 	" All of your Plugins must be added before the following line
 	call vundle#end()            " required
@@ -77,21 +77,22 @@
 "============================================================================================================
 	"|Sneak|
 		"Enable easymotion-like labeling
-		let g:sneak#streak = 1
-		let g:sneak#target_labels = "asdfghjkl;qwertyuiopzxcvbnm/ASDFGHJKL:QWERTYUIOPZXCVBNM?"
+		"let g:sneak#streak = 1
+		"let g:sneak#target_labels = "asdfghjkl;qwertyuiopzxcvbnm/ASDFGHJKL:QWERTYUIOPZXCVBNM?"
 		"Press s or S again to go next/previous match until cursor movement. ; and , works as well
-		let g:sneak#s_next = 1
-		let g:sneak#prompt = 'Sneak>'
+		"let g:sneak#s_next = 1
+		"let g:sneak#prompt = 'Sneak>'
 		"remap fF and tT to Sneak
-		map f <Plug>Sneak_f
-		map F <Plug>Sneak_F
-		map t <Plug>Sneak_t
-		map T <Plug>Sneak_T
+		"map f <Plug>Sneak_f
+		"map F <Plug>Sneak_F
+		"map t <Plug>Sneak_t
+		"map T <Plug>Sneak_T
 	"|Easymotion|
+		"let g:EasyMotion_do_mapping = 0 
 		"Set EasyMotion general trigger key
-		nmap <space> <Plug>(easymotion-prefix)
+		"nmap <space><space> <Plug>(easymotion-prefix)
 		"Set multicharacter search trigger key
-		nmap <CR> <Plug>(easymotion-sn)
+		"nmap <leader>s <Plug>(easymotion-sn)
 		"Use easymotion bi-directional single character find motion
 		"nmap <s> <Plug>(easymotion-overwin-f)
 	"|Nerdtree|
@@ -112,7 +113,7 @@
 		endif
 		let g:airline_symbols.space = "\ua0"
 		"Tabline settings
-		let g:airline#extensions#tabline#enabled = 1							"enable the tabline on top
+		"let g:airline#extensions#tabline#enabled = 1							"enable the tabline on top
 		let g:airline#extensions#tabline#formatter = 'unique_tail_improved' 	"display only the filename for the buffers
   		let g:airline#extensions#tabline#tab_nr_type = 1 						"display the tab number
 		let g:airline#extensions#tabline#fnamemod = ':p:~' 						"configure the formatting of filenames (see |filename-modifiers|). >
@@ -179,11 +180,13 @@
 		nnoremap <Leader>m '
 	"marksok mutatása
 		nnoremap <Leader>ma :marks<cr>
+	"Add the visually selected text to the quickfix list	
+		vnoremap <leader>vv y:vimgrep /<C-R>"/%<CR>
 	"Timestamp beállítások
 		"nmap <leader>ts A<C-R>=strftime(" [%m.%d. %H:%M:%S]")<CR><Esc>
 		"nmap <leader>tl A<C-R>=strftime(" [%Y.%m.%d. %A \| %H:%M:%S]")<CR><Esc>
 		"nmap <leader>td O<C-R>=strftime("%Y.%m.%d.")<CR><Esc>
-	"Az aktuális pozíciótól törli a tartalmat és új timestampot
+	"Az aktuális pozíciótól törli a tartt és új timestampot
 	"szúr be (timestamp long UPDATE)
 		"nmap <leader>tlu C<C-R>=strftime("[%Y.%m.%d. %A \| %H:%M:%S]")<CR><Esc>
 	"ToDo listhez 
@@ -246,7 +249,7 @@
 	"Turns visual bell and beep off
 		set vb t_vb=
 	"A menük eltüntetése, csak a tab marad meg
-		set guioptions=ae
+		set guioptions=aet
 		"set go-=T 
 	"A tabokban csak a fájlnév, ne a path jelenjen meg
 		set guitablabel=%t
@@ -344,7 +347,7 @@
 "~~	|Search and Substitute Settings| ~~
 "============================================================================================================
 	"Substitute kezdése egyszerűbben, automatikusan kieszképelve minden regexet
-		nnoremap <leader>s :%s,\v
+		"nnoremap <leader>s :%s,\v
 	"Keresés ne legyen betűérzékeny
 		set ignorecase 
 	"Ha csak kisbetűvel keresek, nem érzékeny, ha van benne nagybetű is, akkor igen.
@@ -355,8 +358,8 @@
 		set hlsearch 
 	"Kiszedi a keresés kiemelését
 		noremap <leader><space> :noh<cr>:call clearmatches()<cr>
-	"Space-re keres előre, C-Space-re visszafelé, regexek very magicre állítva
-		"noremap <Space> /\v
+	"Trigger search with literal meanings (no REGEX). For special meaning, escape character with \
+		noremap <Space> /\V
 		"noremap <C-Space> ?\v
 	" Keep search matches in the middle of the window and pulse the line when moving to them.
 		nnoremap n nzzzv
@@ -509,6 +512,7 @@
 "============================================================================================================
 "~~ |Changelog| ~~
 "============================================================================================================
+	"2018-10-28 - Added guioption=eat and disabled airline tabline to display regular tabs in GVIM, disabled Sneak and easymotion plugins because i was unable to remap s and Enter which I need for using quickfix list
 	"2018-07-01 - Update Airline tabline (display tab number, hide buffer number) and status line (display full file path), add Sneak plugin
 	"2018-03-02	- Add ,wdt ,wdu, wdo mappings as well as an alternative so it will be easier to remember
 	"2018-02-27 - Collect all <leader> settings under one section, set Diff leaders
