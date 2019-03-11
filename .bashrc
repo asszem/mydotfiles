@@ -21,6 +21,8 @@ alias dir="ls -la"
 alias dirs="dirs -v"
 alias p="pushd"
 alias po="popd"
+alias lt="ll -lath"
+alias lth="ll -lath | head"
 
 source ~/goto/goto.bash
 
