@@ -3,6 +3,7 @@
   "**/*.js": {
     "when": "$(basename).ts"
   },
+  "prettier.singleQuote": true,
   "editor.wordWrap": "on",
   "vim.hlsearch": true,
   "vim.leader": ",",
@@ -86,5 +87,9 @@
   "editor.multiCursorModifier": "alt",
   "workbench.iconTheme": "vscode-icons",
   "vsicons.projectDetection.autoReload": true,
-  "vim.foldfix": true
+  "vim.foldfix": true,
+  "prettier.eslintIntegration": true,
+  "breadcrumbs.enabled": true,
+  "terminal.integrated.rendererType": "dom",
+  "javascript.updateImportsOnFileMove.enabled": "always"
 }

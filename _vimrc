@@ -1,5 +1,4 @@
-"Last updated: 2018-10-28
-"============================================================================================================
+"Last updated: 2018-12-03 "============================================================================================================
 "~~	|Diff Settings| ~~
 "============================================================================================================
 	"the encoding must be set at this point, otherwise Airline will break in GVim
@@ -182,6 +181,8 @@
 		nnoremap <Leader>ma :marks<cr>
 	"Add the visually selected text to the quickfix list	
 		vnoremap <leader>vv y:vimgrep /<C-R>"/%<CR>
+	"Add a DONE to the beginning of the line - used for TODO list
+		noremap <leader>d IDONE <esc>
 	"Timestamp beállítások
 		"nmap <leader>ts A<C-R>=strftime(" [%m.%d. %H:%M:%S]")<CR><Esc>
 		"nmap <leader>tl A<C-R>=strftime(" [%Y.%m.%d. %A \| %H:%M:%S]")<CR><Esc>
@@ -512,6 +513,7 @@
 "============================================================================================================
 "~~ |Changelog| ~~
 "============================================================================================================
+	"2018-12-03 - Added ,d to add DONE to the beginning of the line. Used for todo.txt
 	"2018-10-28 - Added guioption=eat and disabled airline tabline to display regular tabs in GVIM, disabled Sneak and easymotion plugins because i was unable to remap s and Enter which I need for using quickfix list
 	"2018-07-01 - Update Airline tabline (display tab number, hide buffer number) and status line (display full file path), add Sneak plugin
 	"2018-03-02	- Add ,wdt ,wdu, wdo mappings as well as an alternative so it will be easier to remember
