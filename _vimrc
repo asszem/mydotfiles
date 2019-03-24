@@ -1,4 +1,4 @@
-"Last updated: 2018-12-03 "============================================================================================================
+"Last updated: 2019-03-24 "============================================================================================================
 "~~	|Diff Settings| ~~
 "============================================================================================================
 	"the encoding must be set at this point, otherwise Airline will break in GVim
@@ -183,6 +183,8 @@
 		vnoremap <leader>vv y:vimgrep /<C-R>"/%<CR>
 	"Add a DONE to the beginning of the line - used for TODO list
 		noremap <leader>d IDONE <esc>
+	"Use ,ENTER to follow tags in helpfiles 
+		map <CR> <C-]>
 	"Timestamp beállítások
 		"nmap <leader>ts A<C-R>=strftime(" [%m.%d. %H:%M:%S]")<CR><Esc>
 		"nmap <leader>tl A<C-R>=strftime(" [%Y.%m.%d. %A \| %H:%M:%S]")<CR><Esc>
@@ -209,6 +211,7 @@
 		:highlight diffText gui=bold
 		:highlight LineNr guifg=gray
 		:highlight Folded guibg=gray22 guifg=cyan
+		:highlight CursorLine guibg=red guifg=white
 "============================================================================================================
 "~~	|Statusline Settings| ~~
 "============================================================================================================
@@ -360,7 +363,7 @@
 	"Kiszedi a keresés kiemelését
 		noremap <leader><space> :noh<cr>:call clearmatches()<cr>
 	"Trigger search with literal meanings (no REGEX). For special meaning, escape character with \
-		noremap <Space> /\V
+		"noremap <Space> /\V
 		"noremap <C-Space> ?\v
 	" Keep search matches in the middle of the window and pulse the line when moving to them.
 		nnoremap n nzzzv
@@ -414,10 +417,10 @@
 	"Buffer kilistázás és belépés választás módba
 		nnoremap <f1> :ls<cr>:b 
 	"Alternatív (előzőleg megnyitott) buferre vált
-		nnoremap <F2> :b#<cr>
+		nnoremap <Backspace> :b#<cr>
 	"Bufferek között vált F4-F3-ra
-		nnoremap <F4> :bnext <CR>
-		nnoremap <F3> :bprevious<CR>
+		nnoremap <F2> :bprevious<CR>
+		nnoremap <F3> :bnext <CR>
 	"Minden nyitott buffert elment 
 		"map <F5> :wa! <bar> mkview <cr>
 		map <F5> :wa!<cr>
@@ -496,12 +499,25 @@
 	"Source
 		"http://juliankay.com/development/setting-up-vim-to-work-with-powershell/
 "============================================================================================================
+"~~	|NETRW settings| ~~
+"============================================================================================================
+	let g:netrw_liststyle = 3
+	let g:netrw_browse_split = 4
+	let g:netrw_altv = 1
+	let g:netrw_winsize = 25
+	let g:netrw_sort_by="time"
+	let g:netrw_sort_direction="reverse"
+"============================================================================================================
 "~~	|Other Settings| ~~
 "============================================================================================================
+	"Opens the buffer selection by presisng the Enter key - disabled because it interferes with the QuickFix winodw, and space is enough
+	"nnoremap <CR> :b 
+	"Opens the buffers list and calls :b to get ready for buffer switching
+	nnoremap <Space> :ls<CR>:b 
 	"Start Gvim maximized
 	au GUIEnter * simalt ~m
 	"Ez a helpben fontos, eredetilega  CTRL-G az az aktulis fájl infoit mutatja.
-		noremap <C-g> <C-]>
+	noremap <C-g> <C-]>
 	set textwidth=0
 ""============================================================================================================
 ""~~ |CFSW Specific Settings| ~~
@@ -513,6 +529,7 @@
 "============================================================================================================
 "~~ |Changelog| ~~
 "============================================================================================================
+	"2019-03-24 - Map space for :ls for quick buffer selection, update netrw settings, set cursorline to reg/white, update mappings F2/F3 and Backspace for buffer switching, Enter to Ctrl-]
 	"2018-12-03 - Added ,d to add DONE to the beginning of the line. Used for todo.txt
 	"2018-10-28 - Added guioption=eat and disabled airline tabline to display regular tabs in GVIM, disabled Sneak and easymotion plugins because i was unable to remap s and Enter which I need for using quickfix list
 	"2018-07-01 - Update Airline tabline (display tab number, hide buffer number) and status line (display full file path), add Sneak plugin

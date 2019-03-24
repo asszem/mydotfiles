@@ -23,6 +23,8 @@ alias p="pushd"
 alias po="popd"
 alias lt="ll -lath"
 alias lth="ll -lath | head"
+alias kk="ll -lath"
+alias kh="ll -lath | head"
 
 source ~/goto/goto.bash
 
@@ -149,3 +151,5 @@ export GIT_PS1_SHOWUNTRACKEDFILES=1
 unset TMP
 unset TEMP
 
+
+set -o vi
