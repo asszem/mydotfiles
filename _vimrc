@@ -1,4 +1,5 @@
-"Last updated: 2019-03-24 "============================================================================================================
+"Last updated: 2019-05-03
+"============================================================================================================
 "~~	|Diff Settings| ~~
 "============================================================================================================
 	"the encoding must be set at this point, otherwise Airline will break in GVim
@@ -57,8 +58,8 @@
 	Plugin 'ctrlpvim/ctrlp.vim'
 	Plugin 'scrooloose/nerdtree'
 	Plugin 'Xuyuanp/nerdtree-git-plugin'
-	Plugin 'vim-airline/vim-airline'
-	Plugin 'vim-airline/vim-airline-themes'
+	"Plugin 'vim-airline/vim-airline'
+	"Plugin 'vim-airline/vim-airline-themes'
 	Plugin 'powerline/powerline-fonts'
 	Plugin 'flazz/vim-colorschemes'
 	Plugin 'mhinz/vim-signify'
@@ -103,30 +104,37 @@
 		"map <c-p> :CtrlPMixed<cr>
 		map <c-p> :CtrlPMRU<cr>
 		let g:ctrlp_cmd = 'CtrlPMRU'
+		"Open CtrlP in Buffer mode
+		map <c-b> :CtrlPBuffer<cr>
 		"http://ctrlpvim.github.io/ctrlp.vim/#installation"
+		"Make CtrlP open in the same buffer
+		let g:ctrlp_switch_buffer = '0'
+		"https://github.com/kien/ctrlp.vim/blob/master/doc/ctrlp.txt
+		"https://github.com/kien/ctrlp.vim/issues/3780I
 	"|Airline|
 		"Use special characters in statusline
-		let g:airline_powerline_fonts = 1
-		if !exists('g:airline_symbols')
-		  let g:airline_symbols = {}
-		endif
-		let g:airline_symbols.space = "\ua0"
+		"let g:airline_powerline_fonts = 1
+		"if !exists('g:airline_symbols')
+		"  let g:airline_symbols = {}
+		"endif
+		"let g:airline_symbols.space = "\ua0"
 		"Tabline settings
-		"let g:airline#extensions#tabline#enabled = 1							"enable the tabline on top
-		let g:airline#extensions#tabline#formatter = 'unique_tail_improved' 	"display only the filename for the buffers
-  		let g:airline#extensions#tabline#tab_nr_type = 1 						"display the tab number
-		let g:airline#extensions#tabline#fnamemod = ':p:~' 						"configure the formatting of filenames (see |filename-modifiers|). >
-		let g:airline#extensions#tabline#fnamecollapse=0 						"configure collapsing parent directories in buffer name. >
-		let g:airline#extensions#tabline#fnametruncate=0 						"configure truncating non-active buffer names to specified length.
-		"let g:airline#extensions#tabline#buffer_idx_mode = 1 					"display the buffer numbers as well in the top tab row
-		"let g:airline#extensions#tabline#buffer_nr_show = 1					"display the actual buffer number
+		""let g:airline#extensions#tabline#enabled = 1							"enable the tabline on top
+		"let g:airline#extensions#tabline#formatter = 'unique_tail_improved' 	"display only the filename for the buffers
+  		"let g:airline#extensions#tabline#tab_nr_type = 1 						"display the tab number
+		"let g:airline#extensions#tabline#fnamemod = ':p:~' 						"configure the formatting of filenames (see |filename-modifiers|). >
+		"let g:airline#extensions#tabline#fnamecollapse=0 						"configure collapsing parent directories in buffer name. >
+		"let g:airline#extensions#tabline#fnametruncate=0 						"configure truncating non-active buffer names to specified length.
+		""let g:airline#extensions#tabline#buffer_idx_mode = 1 					"display the buffer numbers as well in the top tab row
+		""let g:airline#extensions#tabline#buffer_nr_show = 1					"display the actual buffer number
 		"Required for better performance for Gvim in Windows
-		set rop=type:directx,gamma:1.0,contrast:0.5,level:1,geom:1,renmode:4,taamode:1
+		"set rop=type:directx,gamma:1.0,contrast:0.5,level:1,geom:1,renmode:4,taamode:1
 		"Set content of Airline statusline C and Z
-		let g:airline_section_c='%F [%.3n]%m'			" %f=filename only %F=filename with path %.3n=buffer number %m=modified flag
-		"let g:airline_section_c='%f [%.3n]%m'			" %f=filename only %F=filename with path %.3n=buffer number %m=modified flag
-		let g:airline_section_z='%l:%c[%P]'				" line:column[position%]
+		"let g:airline_section_c='%F [%.3n]%m'			" %f=filename only %F=filename with path %.3n=buffer number %m=modified flag
+		""let g:airline_section_c='%f [%.3n]%m'			" %f=filename only %F=filename with path %.3n=buffer number %m=modified flag
+		"let g:airline_section_z='%l:%c[%P]'				" line:column[position%]
 		"Set the airline theme 
+		"let g:airline_theme = "wombat"
 "============================================================================================================
 "~~	|Mapleader Settings| ~~
 "============================================================================================================
@@ -212,27 +220,33 @@
 		:highlight LineNr guifg=gray
 		:highlight Folded guibg=gray22 guifg=cyan
 		:highlight CursorLine guibg=red guifg=white
+		:highlight Cursor guibg=green guifg=black
+		autocmd InsertEnter * highlight CursorLine guibg=white guifg=black
+		autocmd InsertLeave * highlight CursorLine guibg=red guifg=white
 "============================================================================================================
 "~~	|Statusline Settings| ~~
 "============================================================================================================
 	"Set status line color GUI
-		:highlight statusline gui=NONE guibg=Yellow guifg=black
-		:highlight statuslineNC gui=NONE guibg=gray guifg=black
+		:highlight statusline gui=NONE guibg=Yellow guifg=Black
+		:highlight statuslineNC gui=NONE guibg=White guifg=Black
+		:highlight fileNameColor guifg=blue guibg=white gui=BOLD
 	"Set status line color CTERM
-		:highlight statusline ctermbg=black ctermfg=yellow
-		:highlight statuslineNC ctermbg=white ctermfg=blue
-		:highlight DiffText ctermfg=yellow
+		":highlight statusline ctermbg=black ctermfg=yellow
+		":highlight statuslineNC ctermbg=white ctermfg=blue
+		":highlight DiffText ctermfg=yellow
 	"Set status line content
         set statusline=  
-        set statusline+=Buff[%.3n]\                  " buffer number  
-        set statusline+=%f\                          " filename   
-        set statusline+=%h%m%r%w                     " status flags  
-        set statusline+=\[%{strlen(&ft)?&ft:'none'}] " file type  
-		set statusline+=\[%{&fileencoding?&fileencoding:&encoding}]
-        set statusline+=%=                           " right align remainder  
-        "set statusline+=0x%-8B                       " character value  
-        set statusline+=%-12(%l,%c%V%)               " line, character  
-        set statusline+=%<%P                         " file position  
+    	set statusline+=[%.3n]\   		  			        			" buffer number, max 3 char
+		set statusline+=%#fileNameColor#								" set fileNameColor highlight
+        set statusline+=%F                  	    					" filename, full path, %< cut at start
+		set statusline+=%*												" reset color to statusline
+        set statusline+=%h%m%r%w               	    					" status flags [+] [RO] 
+        set statusline+=%=                         						" right align remainder  
+        set statusline+=\ Typ[%{strlen(&ft)?&ft:'none'}]\ 				" file type  
+		set statusline+=Enc[%{&fileencoding?&fileencoding:&encoding}]\  "file encoding
+		set statusline+=Lin[%l\/%L]\ Col[%c]\ 							" line, total lines, column
+        set statusline+=%<%P               		         				" file position  
+        "set statusline+=0x%-8B			                		     	" character value  
 	"Older statusline settings
 		"set statusline=%<%F%h%m%r%h%w%y\ %{&ff}\ %{strftime(\"%c\",getftime(expand(\"%:p\")))}%=\ lin:%l\,%L\ col:%c%V\ pos:%o\ ascii:%b\ %P
 		"set statusline=%<%F%h%m%r%h%w%y\ [FORMAT=%{&ff}]\ %{strftime(\"%c\",getftime(expand(\"%:p\")))}%=\ lin:%l\,%L\ col:%c%V\ pos:%o\ ascii:%b\ %P
@@ -418,9 +432,10 @@
 		nnoremap <f1> :ls<cr>:b 
 	"Alternatív (előzőleg megnyitott) buferre vált
 		nnoremap <Backspace> :b#<cr>
-	"Bufferek között vált F4-F3-ra
+	"Bufferek között vált F3-F4-ra
 		nnoremap <F2> :bprevious<CR>
 		nnoremap <F3> :bnext <CR>
+		nnoremap <F4> :b#<CR>
 	"Minden nyitott buffert elment 
 		"map <F5> :wa! <bar> mkview <cr>
 		map <F5> :wa!<cr>
@@ -529,6 +544,9 @@
 "============================================================================================================
 "~~ |Changelog| ~~
 "============================================================================================================
+	"2019-05-03 - add let g:ctrlp_switch_buffer = 0 to have CtrlP always open in current window, disable Airline, setup new statusline with color highlighting
+	"2019-05-02	- Map Ctrl-b for CtrlPBuffer, map F4 for :b
+	"2019-04-01 - Change CursorLine color in Insert mode
 	"2019-03-24 - Map space for :ls for quick buffer selection, update netrw settings, set cursorline to reg/white, update mappings F2/F3 and Backspace for buffer switching, Enter to Ctrl-]
 	"2018-12-03 - Added ,d to add DONE to the beginning of the line. Used for todo.txt
 	"2018-10-28 - Added guioption=eat and disabled airline tabline to display regular tabs in GVIM, disabled Sneak and easymotion plugins because i was unable to remap s and Enter which I need for using quickfix list
