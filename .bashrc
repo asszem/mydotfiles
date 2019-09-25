@@ -1,19 +1,15 @@
 #.bashrc for Windows
 # prompt settings for Git Bash is in file 'git-promt.sh' located in 'C:\Program Files\Git\etc\profile.d'
-
-
 #http://blog.albertarmea.com/post/115102365718/using-gvim-from-git-bash
 
-alias view='/c/Program\ Files\ \(x86\)/Vim/vim80/gvim.exe -R'
-#alias vim='/c/Program\ Files\ \(x86\)/Vim/vim80/gvim.exe'
 
-alias gvimdiff='/c/Program\ Files\ \(x86\)/Vim/vim80/gvim.exe -d'
-#alias vimdiff='/c/Program\ Files\ \(x86\)/Vim/vim80/gvim.exe -d'
-
+alias vim='/c/Program\ Files\ \(x86\)/Vim/vim81/gvim.exe --remote'
 alias gvim='/c/Program\ Files\ \(x86\)/Vim/vim80/gvim.exe'
-#alias gvim='C:\Program Files (x86)\Vim\vim80\gvim.exe'
+alias gvimdiff='/c/Program\ Files\ \(x86\)/Vim/vim81/gvim.exe -d'
 
 alias cd..="cd .."
+alias ..="cd .."
+alias ...="cd ../../"
 alias cd-="cd -"
 alias back="cd -"
 alias cd--="cd --"
@@ -153,3 +149,6 @@ unset TEMP
 
 
 set -o vi
+
+# to be able to i-search in bash history with Ctrl-S
+set stty -ixon
