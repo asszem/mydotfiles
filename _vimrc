@@ -516,8 +516,18 @@
 "============================================================================================================
 "~~	|NETRW settings| ~~
 "============================================================================================================
-	let g:netrw_liststyle = 3
-	let g:netrw_browse_split = 4
+	"https://shapeshed.com/vim-netrw/#changing-how-files-are-opened
+	let g:netrw_liststyle = 4
+		"THINLIST=0
+		"LONGLIST=1
+		"WIDELIST=2
+		"TREELIST=3
+		"MAXLIST =4
+	let g:netrw_browse_split = 0
+		"1 - open files in a new horizontal split
+		"2 - open files in a new vertical split
+		"3 - open files in a new tab
+		"4 - open in previous window
 	let g:netrw_altv = 1
 	let g:netrw_winsize = 25
 	let g:netrw_sort_by="time"

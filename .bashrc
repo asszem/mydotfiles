@@ -4,7 +4,7 @@
 
 
 alias vim='/c/Program\ Files\ \(x86\)/Vim/vim81/gvim.exe --remote'
-alias gvim='/c/Program\ Files\ \(x86\)/Vim/vim80/gvim.exe'
+#alias gvim='/c/Program\ Files\ \(x86\)/Vim/vim81/gvim.exe'
 alias gvimdiff='/c/Program\ Files\ \(x86\)/Vim/vim81/gvim.exe -d'
 
 alias cd..="cd .."
