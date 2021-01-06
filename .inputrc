@@ -3,12 +3,14 @@ set editing-mode vi
 # Start bash in command mode
 set keymap vi-command
 #show whether in command or in insert mode
-set show-mode-in-prompt on
+set show-mode-in-prompt off
 # Change the promt and cursor depending on mode
 # Blinking block cursor and red prompt text in command mode
 set vi-cmd-mode-string \1\e[2 q\e[1;31m\2[CMD]
+#set vi-cmd-mode-string [CMD]
 # Blinking bar cursor in insert mode
 set vi-ins-mode-string \1\e[5 q\2[INS]
+#set vi-ins-mode-string INS]
 # Fallback on blinking cursors
 #set vi-ins-mode-string \1\e[5 q\2
 #set vi-cmd-mode-string \1\e[2 q\2

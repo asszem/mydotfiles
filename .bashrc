@@ -121,27 +121,33 @@ Jobs="\j"
 #PS1="$PROMPT"
 #export PS1
 
-
-
-
 #shopt -s promptvars
 #export GIT_PS1_SHOWDIRTYSTATE=1
 #export GIT_PS1_SHOWUPSTREAM='verbose git'
-#export PS1='\[\033[1;36m\]\[\033[0m\]\[\033[1;34m\]\w\[\033[0m\] 
-#\[\033[1;32m\]$(__git_ps1)\[\033[0m\]\$ '
-
 
 #https://makandracards.com/makandra/1090-customize-your-bash-prompt
 #export PS1='\[\e[14;33;41m\]alma$(__git_ps1 "%s")\[\e[0m\]'
+#export PROMPT_COMMAND=' __git_ps1 "\n[\e[33;47m][[\e[m]\A [\e[31m]\u[\e[m]@[\e[32m]\h [\e[34;01m]\l[\e[m] [\e[36m]\w[\e[m]" "[\e[33m]][\e[m]\n$ "'
+#export PROMPT_COMMAND=' __git_ps1 "\n[\e[30;47m] --[[\e[m]\A [\e[31m]\u[\e[m]@[\e[32m]\h [\e[34;01m]\l[\e[m] [\e[36m]\w[\e[m]" "[\e[33m]][\e[m]$ "'
+#export PROMPT_COMMAND="$PS1$" '[\e[30;47m]korte\n'
+#export PROMPT_COMMAND=' __git_ps1'
 
+
+#Ways to parse current git branch name
+#parse_git_branch() { git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/' ; }
+#export PS1="\u@\h \[\033[32m\]\w\[\033[33m\]\$(parse_git_branch)\[\033[00m\] $ "
+
+#Source: https://gist.github.com/justintv/168835
 export GIT_PS1_SHOWDIRTYSTATE=1
 export GIT_PS1_SHOWCOLORHINTS=1
 export GIT_PS1_SHOWUNTRACKEDFILES=1
 
-#export PROMPT_COMMAND=' __git_ps1 "\n[\e[33;47m][[\e[m]\A [\e[31m]\u[\e[m]@[\e[32m]\h [\e[34;01m]\l[\e[m] [\e[36m]\w[\e[m]" "[\e[33m]][\e[m]\n$ "'
 
-#export PROMPT_COMMAND=' __git_ps1 "\n[\e[30;47m] --[[\e[m]\A [\e[31m]\u[\e[m]@[\e[32m]\h [\e[34;01m]\l[\e[m] [\e[36m]\w[\e[m]" "[\e[33m]][\e[m]$ "'
-#export PROMPT_COMMAND="$PS1$" '[\e[30;47m]korte\n'
+#export PROMPT_COMMAND=' __git_ps1 "\n[\e[33m][[\e[m]\A [\e[31m]\u[\e[m]@[\e[32m]\h [\e[34;01m]\l[\e[m] [\e[36m]\w[\e[m]" "[\e[33m]][\e[m]\n$ "'
+export PROMPT_COMMAND=' __git_ps1 "┌──\033[01;36m\]\t \[\033[01;34m\][\w]\[\033[00m\]" "\n└────\[\033[0;31m\]█\[\033[00m\] "'
+
+
+### END of PROMPT SETUP
 
 
 unset TMP
@@ -152,3 +158,4 @@ set -o vi
 
 # to be able to i-search in bash history with Ctrl-S
 set stty -ixon
+  
