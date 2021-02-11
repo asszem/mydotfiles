@@ -65,8 +65,8 @@
 	Plugin 'mhinz/vim-signify'
 	Plugin 'mhinz/vim-startify'
 	Plugin 'mbbill/undotree'
-	"Plugin 'easymotion/vim-easymotion'
-	"Plugin 'justinmk/vim-sneak'
+	Plugin 'easymotion/vim-easymotion'
+	Plugin 'justinmk/vim-sneak'
 	"Plugin 'airblade/vim-gitgutter'
 
 	" All of your Plugins must be added before the following line
@@ -77,11 +77,11 @@
 "============================================================================================================
 	"|Sneak|
 		"Enable easymotion-like labeling
-		"let g:sneak#streak = 1
-		"let g:sneak#target_labels = "asdfghjkl;qwertyuiopzxcvbnm/ASDFGHJKL:QWERTYUIOPZXCVBNM?"
+		let g:sneak#streak = 1
+		let g:sneak#target_labels = "asdfghjkl;qwertyuiopzxcvbnm/ASDFGHJKL:QWERTYUIOPZXCVBNM?"
 		"Press s or S again to go next/previous match until cursor movement. ; and , works as well
-		"let g:sneak#s_next = 1
-		"let g:sneak#prompt = 'Sneak>'
+		let g:sneak#s_next = 1
+		let g:sneak#prompt = 'Sneak>'
 		"remap fF and tT to Sneak
 		"map f <Plug>Sneak_f
 		"map F <Plug>Sneak_F
@@ -551,6 +551,22 @@
 	map <leader>svc /^.\{38}[FT][MS]\s<cr>	
 	map <F10> :tabnew<cr>
 	map <F12> :tabnew ~\Box Sync\CFSW\CFSW Notes\CFSWTodo.txt<cr>
+	
+
+
+" Set the LineNr only for the active buffer/window
+highlight LineNr guibg=green guifg=black
+augroup LineNrHighlight
+    autocmd!
+	autocmd WinEnter * set number
+    autocmd WinLeave * set nonumber
+augroup END
+highlight StatusLineNC guifg=white guibg=darkgray
+
+
+
+
+
 "============================================================================================================
 "~~ |Changelog| ~~
 "============================================================================================================

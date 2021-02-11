@@ -3,9 +3,8 @@
 #http://blog.albertarmea.com/post/115102365718/using-gvim-from-git-bash
 
 
-alias vim='/c/Program\ Files\ \(x86\)/Vim/vim81/gvim.exe --remote'
-#alias gvim='/c/Program\ Files\ \(x86\)/Vim/vim81/gvim.exe'
-alias gvimdiff='/c/Program\ Files\ \(x86\)/Vim/vim81/gvim.exe -d'
+alias vim='/c/Program\ Files\ \(x86\)/Vim/vim82/gvim.exe'
+#alias gvimdiff='/c/Program\ Files\ \(x86\)/Vim/vim82/gvim.exe -d'
 
 alias cd..="cd .."
 alias ..="cd .."
@@ -17,10 +16,14 @@ alias dir="ls -la"
 alias dirs="dirs -v"
 alias p="pushd"
 alias po="popd"
+alias ll="ls -la"
 alias lt="ll -lath"
 alias lth="ll -lath | head"
 alias kk="ll -lath"
 alias kh="ll -lath | head"
+alias d="winpty docker"
+alias dps="docker ps -a"
+alias dls="docker image ls"
 
 source ~/goto/goto.bash
 
@@ -144,7 +147,7 @@ export GIT_PS1_SHOWUNTRACKEDFILES=1
 
 
 #export PROMPT_COMMAND=' __git_ps1 "\n[\e[33m][[\e[m]\A [\e[31m]\u[\e[m]@[\e[32m]\h [\e[34;01m]\l[\e[m] [\e[36m]\w[\e[m]" "[\e[33m]][\e[m]\n$ "'
-export PROMPT_COMMAND=' __git_ps1 "┌──\033[01;36m\]\t \[\033[01;34m\][\w]\[\033[00m\]" "\n└────\[\033[0;31m\]█\[\033[00m\] "'
+export PROMPT_COMMAND=' __git_ps1 "\n┌──\033[01;36m\]\t \[\033[01;34m\][\w]\[\033[00m\]" "\n└────\[\033[0;31m\]█\[\033[00m\] "'
 
 
 ### END of PROMPT SETUP
