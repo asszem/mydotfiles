@@ -1,10 +1,27 @@
 {
   "settingsVersion": "1.66",
-  "exclusionRules": [],
+  "exclusionRules": [
+    {
+      "pattern": "http://triton.ironhelmet.com/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://app.hey.com/*",
+      "passKeys": "h123456"
+    },
+    {
+      "pattern": "https?://www.youtube.com/*",
+      "passKeys": "<SPACE>"
+    },
+    {
+      "pattern": "https?://ivark.github.io/*",
+      "passKeys": "m"
+    }
+  ],
   "filterLinkHints": false,
   "waitForEnterForFilteredHints": true,
   "hideHud": false,
-  "keyMappings": "# Insert your preferred key mappings here.\nmap <c-l> nextTab\nmap <c-h> previousTab\nmap H previousTab\nmap L nextTab\nmap b Vomnibar.activateBookmarksInNewTab\nmap B Vomnibar.activateBookmarksInNewTab\nmap gb goBack\nmap gf goForward\nmap gp visitPreviousTab\nmap h LinkHints.activateMode action=hover\nmap í LinkHints.activateMode action=focus\nmap c LinkHints.activateMode action=copy-text\nmap ' Marks.activateGotoMode\nmap R reload hard\nmap t Vomnibar.activateTabSelection\nmap <space> enterFindMode\nmap <enter> Vomnibar.activateInNewTab\nmap <left> previousTab\nmap <right> nextTab\nmap <up> scrollToTop\nmap <down> scrollToBotom",
+  "keyMappings": "# Insert your preferred key mappings here.\nmap <c-l> nextTab\nmap <c-h> previousTab\nmap H previousTab\nmap L nextTab\nmap b Vomnibar.activateBookmarksInNewTab\nmap B Vomnibar.activateBookmarksInNewTab\nmap gb goBack\nmap gf goForward\nmap gp visitPreviousTab\nmap h LinkHints.activateMode action=hover\nmap H LinkHints.activateMode action=focus\nmap c LinkHints.activateMode action=copy-text\nmap ' Marks.activateGotoMode\nmap R reload hard\nmap t Vomnibar.activateTabSelection\nmap <space> enterFindMode\nmap <enter> Vomnibar.activateInNewTab\nmap <left> previousTab\nmap <right> nextTab\nmap <down> scrollToBottom\nmap <up> scrollToTop",
   "linkHintCharacters": "sadfjklewcmpgh",
   "linkHintNumbers": "0123456789",
   "newTabUrl": "pages/blank.html",

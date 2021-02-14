@@ -162,3 +162,8 @@ set -o vi
 # to be able to i-search in bash history with Ctrl-S
 set stty -ixon
   
+
+
+# Source goto
+[[ -s "/usr/local/share/goto.sh" ]] && source /usr/local/share/goto.sh
+

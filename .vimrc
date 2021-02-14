@@ -1,4 +1,4 @@
-"Last updated: 2018-07-15
+"Last updated: 2021-02-14
 "============================================================================================================
 "~~	|Diff Settings| ~~
 "============================================================================================================
@@ -58,8 +58,8 @@
 	Plugin 'ctrlpvim/ctrlp.vim'
 	Plugin 'scrooloose/nerdtree'
 	Plugin 'Xuyuanp/nerdtree-git-plugin'
-	Plugin 'vim-airline/vim-airline'
-	Plugin 'vim-airline/vim-airline-themes'
+	"Plugin 'vim-airline/vim-airline'
+	"Plugin 'vim-airline/vim-airline-themes'
 	Plugin 'easymotion/vim-easymotion'
 	Plugin 'powerline/powerline-fonts'
 	Plugin 'flazz/vim-colorschemes'
@@ -88,9 +88,9 @@
 		map t <Plug>Sneak_t
 		map T <Plug>Sneak_T
 	"|Easymotion|
-		"Set EasyMotion general trigger key
-		nmap <space> <Plug>(easymotion-prefix)
-		"Set multicharacter search trigger key
+		"Set EasyMotion general trigger key - Space + s, space + w, etc
+		nmap <space> <space><Plug>(easymotion-prefix)
+		"Set multicharacter search trigger key - Enter
 		nmap <CR> <Plug>(easymotion-sn)
 		"Use easymotion bi-directional single character find motion
 		"nmap <s> <Plug>(easymotion-overwin-f)
@@ -106,27 +106,27 @@
 		"http://ctrlpvim.github.io/ctrlp.vim/#installation"
 	"|Airline|
 		"Use special characters in statusline
-		let g:airline_powerline_fonts = 1
-		if !exists('g:airline_symbols')
-		  let g:airline_symbols = {}
-		endif
-		let g:airline_symbols.space = "\ua0"
-		"Tabline settings
-		let g:airline#extensions#tabline#enabled = 1							"enable the tabline on top
-		let g:airline#extensions#tabline#formatter = 'unique_tail_improved' 	"display only the filename for the buffers
-  		let g:airline#extensions#tabline#tab_nr_type = 1 						"display the tab number
-		let g:airline#extensions#tabline#fnamemod = ':p:~' 						"configure the formatting of filenames (see |filename-modifiers|). >
-		let g:airline#extensions#tabline#fnamecollapse=0 						"configure collapsing parent directories in buffer name. >
-		let g:airline#extensions#tabline#fnametruncate=0 						"configure truncating non-active buffer names to specified length.
-		"let g:airline#extensions#tabline#buffer_idx_mode = 1 					"display the buffer numbers as well in the top tab row
-		"let g:airline#extensions#tabline#buffer_nr_show = 1					"display the actual buffer number
-		"Required for better performance for Gvim in Windows
-		set rop=type:directx,gamma:1.0,contrast:0.5,level:1,geom:1,renmode:4,taamode:1
-		"Set content of Airline statusline C and Z
-		let g:airline_section_c='%F [%.3n]%m'			" %f=filename only %F=filename with path %.3n=buffer number %m=modified flag
-		"let g:airline_section_c='%f [%.3n]%m'			" %f=filename only %F=filename with path %.3n=buffer number %m=modified flag
-		let g:airline_section_z='%l:%c[%P]'				" line:column[position%]
-		"Set the airline theme 
+		"let g:airline_powerline_fonts = 1
+		"if !exists('g:airline_symbols')
+		"  let g:airline_symbols = {}
+		"endif
+		"let g:airline_symbols.space = "\ua0"
+		""Tabline settings
+		"let g:airline#extensions#tabline#enabled = 1							"enable the tabline on top
+		"let g:airline#extensions#tabline#formatter = 'unique_tail_improved' 	"display only the filename for the buffers
+  		"let g:airline#extensions#tabline#tab_nr_type = 1 						"display the tab number
+		"let g:airline#extensions#tabline#fnamemod = ':p:~' 						"configure the formatting of filenames (see |filename-modifiers|). >
+		"let g:airline#extensions#tabline#fnamecollapse=0 						"configure collapsing parent directories in buffer name. >
+		"let g:airline#extensions#tabline#fnametruncate=0 						"configure truncating non-active buffer names to specified length.
+		""let g:airline#extensions#tabline#buffer_idx_mode = 1 					"display the buffer numbers as well in the top tab row
+		""let g:airline#extensions#tabline#buffer_nr_show = 1					"display the actual buffer number
+		""Required for better performance for Gvim in Windows
+		"set rop=type:directx,gamma:1.0,contrast:0.5,level:1,geom:1,renmode:4,taamode:1
+		""Set content of Airline statusline C and Z
+		"let g:airline_section_c='%F [%.3n]%m'			" %f=filename only %F=filename with path %.3n=buffer number %m=modified flag
+		""let g:airline_section_c='%f [%.3n]%m'			" %f=filename only %F=filename with path %.3n=buffer number %m=modified flag
+		"let g:airline_section_z='%l:%c[%P]'				" line:column[position%]
+		""Set the airline theme 
 "============================================================================================================
 "~~	|Mapleader Settings| ~~
 "============================================================================================================
@@ -193,47 +193,56 @@
 		"set magic
 		"nmap <leader>dd :s,\(^\s*\)[+\|-],\1!,e<cr>:noh<cr>
 "============================================================================================================
-"~~ |Colors, Colorschemes| ~~
+"~~ |Color and Cursor settings| ~~
 "============================================================================================================
 	"Set color scheme
-		:color pablo
-	"Color overrides for Pablo
-		:highlight Comment ctermfg=6
-		:highlight Folded ctermfg=0
+		:color molokai_dark
+	"Color overrides
+		:highlight Comment ctermfg=gray
+		:highlight Folded ctermfg=0 ctermbg=white
 		:highlight diffChange ctermfg=11
-	"Color overrides for Molokai_dark
-		:highlight diffText gui=bold
-		:highlight LineNr guifg=gray
-		:highlight Folded guibg=gray22 guifg=cyan
+		:highlight Search cterm=NONE ctermfg=white ctermbg=blue
+		:highlight Cursor ctermfg=yellow ctermbg=black cterm=bold term=bold
+		:highlight CursorLine cterm=bold ctermbg=red ctermfg=white
+		autocmd InsertEnter * highlight CursorLine ctermbg=white ctermfg=black
+		autocmd InsertLeave * highlight CursorLine ctermbg=red ctermfg=white
+		:highlight LineNr ctermbg=green ctermfg=black
+		augroup LineNrHighlight
+			autocmd!
+			autocmd WinEnter * set number
+			autocmd WinLeave * set nonumber
+		augroup end
+	"Cursor Shape Settings
+		let &t_SI.="\e[5 q" "SI = INSERT mode
+		let &t_SR.="\e[4 q" "SR = REPLACE mode
+		let &t_EI.="\e[1 q" "EI = NORMAL mode (ELSE)
+		"Cursor settings:
+		"  1 -> blinking block
+		"  2 -> solid block 
+		"  3 -> blinking underscore
+		"  4 -> solid underscore
+		"  5 -> blinking vertical bar
+		"  6 -> solid vertical bar
 "============================================================================================================
 "~~	|Statusline Settings| ~~
 "============================================================================================================
-	"Set status line color GUI
-		:highlight statusline gui=NONE guibg=Yellow guifg=black
-		:highlight statuslineNC gui=NONE guibg=gray guifg=black
 	"Set status line color CTERM
 		:highlight statusline ctermbg=black ctermfg=yellow
-		:highlight statuslineNC ctermbg=white ctermfg=blue
+		:highlight statuslineNC ctermbg=white ctermfg=darkgrey
 		:highlight DiffText ctermfg=yellow
+		:highlight fileNameColor ctermfg=cyan ctermbg=yellow 
 	"Set status line content
         set statusline=  
-        set statusline+=Buff[%.3n]\                  " buffer number  
-        set statusline+=%f\                          " filename   
-        set statusline+=%h%m%r%w                     " status flags  
-        set statusline+=\[%{strlen(&ft)?&ft:'none'}] " file type  
-		set statusline+=\[%{&fileencoding?&fileencoding:&encoding}]
-        set statusline+=%=                           " right align remainder  
-        "set statusline+=0x%-8B                       " character value  
-        set statusline+=%-12(%l,%c%V%)               " line, character  
-        set statusline+=%<%P                         " file position  
-	"Older statusline settings
-		"set statusline=%<%F%h%m%r%h%w%y\ %{&ff}\ %{strftime(\"%c\",getftime(expand(\"%:p\")))}%=\ lin:%l\,%L\ col:%c%V\ pos:%o\ ascii:%b\ %P
-		"set statusline=%<%F%h%m%r%h%w%y\ [FORMAT=%{&ff}]\ %{strftime(\"%c\",getftime(expand(\"%:p\")))}%=\ lin:%l\,%L\ col:%c%V\ pos:%o\ ascii:%b\ %P
-		"set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strftime(\"%y.%m.%d\ -\ %H:%M:%S\")}
-		"saját barkácsolás
-		"set statusline=[%-n]\ %<%t%m%r%w%y\ %=\ Lin[%l\/%L]\ Col[%c%V]\ File[%F]\ Date[%{strftime(\"%Y.%m.%d.\|%H:%M\",getftime(expand(\"%:p\")))}]\ %P
-		"set statusline=%f\ %=\ [%{strftime(\"%Y-%m-%d\ %H:%M\",getftime(expand(\"%:p\")))}]\ [%{&fileencoding?&fileencoding:&encoding}]\ [%-n]\ %m\ [%F]\ %=\ Lin[%l\/%L]\ Col[%c%V]\ %P
-		"set statusline=%f\ [%{strftime(\"%Y-%m-%d\ %H:%M\",getftime(expand(\"%:p\")))}]\ [%{&fileencoding?&fileencoding:&encoding}]\ [%-n]\ %m\ %=\ [%F]\ Lin[%l\/%L]\ Col[%c%V]\ %P
+        set statusline+=[%.3n]\  		              							" buffer number  
+        set statusline+=%#fileNameColor#  	          							" filename   
+        set statusline+=%F							  							" filename full path
+        set statusline+=%*							  							" reset color to statusline
+        set statusline+=%h%m%r%w                      							" status flags  
+        set statusline+=%=                            							" right align remainder  
+        set statusline+=Typ\[%{strlen(&ft)?&ft:'none'}]\   						" file type  
+		set statusline+=Enc[%{&fileencoding?&fileencoding:&encoding}]			" encoding
+        set statusline+=\ Lin[%l\/%L]\ Col[%c]									" line number,column position
+        set statusline+=%<%P                 							        " file position  
 "============================================================================================================
 "~~	|UI settings| ~~
 "============================================================================================================
@@ -245,9 +254,6 @@
 		set wildmode=list:longest,full
 	"Turns visual bell and beep off
 		set vb t_vb=
-	"A menük eltüntetése, csak a tab marad meg
-		set guioptions=ae
-		"set go-=T 
 	"A tabokban csak a fájlnév, ne a path jelenjen meg
 		set guitablabel=%t
 	"Automatikusan ne szúrjon be sortörést -- eztet sajnos a source $VIMRUNTIME/vimrc_example.vim felülírja
@@ -282,7 +288,7 @@
 			au WinLeave * setlocal nocursorline
 		augroup END
 	"14 space-t szúr be shobreak után
-		let &showbreak=repeat(' ', 14) 
+		"let &showbreak=repeat(' ', 14) 
 	" New split window on the right
 		set splitright
 	" New split window on the bottom
@@ -295,7 +301,6 @@
 "~~	|Cursor Movement and Edit Mappings| ~~
 "============================================================================================================
 	"ESC gomb átmappolása
-		imap ii <Esc>
 		imap jk <Esc>
 	"Shift-space: save all
 		nnoremap <S-Space> :wa!<cr>
@@ -484,35 +489,29 @@
 	" Reload file if it's modified outside
 		set autoread
 		set autowrite
-	"Set Powrshell as default shell
-	"Removed this option, because vimdiff did not work well in powershell
-		"set shell=powershell
-		"set shell=%SystemRoot%\syswow64\WindowsPowerShell\v1.0\powershell.exe
-		"set shellcmdflag=-Command
-	"Source
-		"http://juliankay.com/development/setting-up-vim-to-work-with-powershell/
 "============================================================================================================
 "~~	|Other Settings| ~~
 "============================================================================================================
-	"Start Gvim maximized
-	"au GUIEnter * simalt ~m
-	"Ez a helpben fontos, eredetilega  CTRL-G az az aktulis fájl infoit mutatja.
-		"noremap <C-g> <C-]>
+	"Opens the buffers list and calls :b ot get ready for buffer switching
+	nnoremap <Space> :ls<CR>:b
 	set textwidth=0
+
 	" Set the cursor shape and color for vim (not gvim)
 	" http://vim.wikia.com/wiki/Configuring_the_cursor
-	if &term =~ "xterm\\|rxvt"
-	  " use an orange cursor in insert mode
-	  let &t_SI = "\<Esc>[3 q\<Esc>]12;orange\x7"
-	  " use a red cursor otherwise
-	  let &t_EI = "\<Esc>[0 q\<Esc>]12;red\x7"
-	  silent !echo -ne "\033]12;red\007"
-	  " reset cursor when vim exits
-	   autocmd VimLeave * silent !echo -ne "\033]112\007"
-	endif
+"	if &term =~ "xterm\\|rxvt"
+"	  " use an orange cursor in insert mode
+"	  let &t_SI = "\<Esc>[3 q\<Esc>]12;orange\x7"
+"	  " use a red cursor otherwise
+"	  let &t_EI = "\<Esc>[0 q\<Esc>]12;red\x7"
+"	  silent !echo -ne "\033]12;red\007"
+"	  " reset cursor when vim exits
+"	   autocmd VimLeave * silent !echo -ne "\033]112\007"
+"	endif
+
 "============================================================================================================
 "~~ |Changelog| ~~
 "============================================================================================================
+	"2021-02-14 - Consolidate sneak and easymotion keys with Windows version
 	"2017-07-15 - Add cursor color and shape settings for xterm mode (not for gvim)
 	"2018-07-01 - Update Airline tabline (display tab number, hide buffer number) and status line (display full file path), add Sneak plugin
 	"2018-03-02	- Add ,wdt ,wdu, wdo mappings as well as an alternative so it will be easier to remember
