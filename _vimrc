@@ -232,8 +232,8 @@
 "============================================================================================================
 	"Set status line color GUI
 		:highlight statusline gui=NONE guibg=Yellow guifg=Black
-		:highlight statuslineNC gui=NONE guibg=White guifg=Black
-		:highlight fileNameColor guifg=blue guibg=white gui=BOLD
+		:highlight statuslineNC gui=NONE guibg=darkgray guifg=Black
+		:highlight fileNameColor guifg=black guibg=green gui=BOLD
 	"Set status line color CTERM
 		":highlight statusline ctermbg=black ctermfg=yellow
 		":highlight statuslineNC ctermbg=white ctermfg=blue
