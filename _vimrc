@@ -1,11 +1,11 @@
-"Last updated: 2019-05-03
+"Last updated: 2021-02-14
 "============================================================================================================
 "~~	|Diff Settings| ~~
 "============================================================================================================
 	"the encoding must be set at this point, otherwise Airline will break in GVim
 	set encoding=utf-8
 	"a ctrl-V átmappolása mielőtt az mswin.vim a rendszerszintű paste-t rakja be helyette
-	map <leader>v <c-q>
+	"map <leader>v <c-q>
 	set nocompatible
 	source $VIMRUNTIME/vimrc_example.vim
 	source $VIMRUNTIME/mswin.vim
@@ -43,16 +43,13 @@
 "============================================================================================================
 	set nocompatible              " be iMproved, require
 	filetype off                  " required
-
 	" set the runtime path to include Vundle and initialize
 	set rtp+=$HOME/.vim/bundle/Vundle.vim/
 	call vundle#begin('$HOME/.vim/bundle/')
 	" alternatively, pass a path where Vundle should install plugins
 	"call vundle#begin('~/some/path/here')
-
 	" let Vundle manage Vundle, required
 	Plugin 'VundleVim/Vundle.vim'
-
 	" Keep Plugin commands between vundle#begin/end.
 	Plugin 'tpope/vim-fugitive'
 	Plugin 'ctrlpvim/ctrlp.vim'
@@ -68,7 +65,6 @@
 	Plugin 'easymotion/vim-easymotion'
 	Plugin 'justinmk/vim-sneak'
 	"Plugin 'airblade/vim-gitgutter'
-
 	" All of your Plugins must be added before the following line
 	call vundle#end()            " required
 	filetype plugin indent on    " required
@@ -83,16 +79,16 @@
 		let g:sneak#s_next = 1
 		let g:sneak#prompt = 'Sneak>'
 		"remap fF and tT to Sneak
-		"map f <Plug>Sneak_f
-		"map F <Plug>Sneak_F
-		"map t <Plug>Sneak_t
-		"map T <Plug>Sneak_T
+		map f <Plug>Sneak_f
+		map F <Plug>Sneak_F
+		map t <Plug>Sneak_t
+		map T <Plug>Sneak_T
 	"|Easymotion|
 		"let g:EasyMotion_do_mapping = 0 
 		"Set EasyMotion general trigger key
-		"nmap <space><space> <Plug>(easymotion-prefix)
+		nmap <space><space> <Plug>(easymotion-prefix)
 		"Set multicharacter search trigger key
-		"nmap <leader>s <Plug>(easymotion-sn)
+		nmap <CR> <Plug>(easymotion-sn)
 		"Use easymotion bi-directional single character find motion
 		"nmap <s> <Plug>(easymotion-overwin-f)
 	"|Nerdtree|
@@ -192,7 +188,7 @@
 	"Add a DONE to the beginning of the line - used for TODO list
 		noremap <leader>d IDONE <esc>
 	"Use ,ENTER to follow tags in helpfiles 
-		map <CR> <C-]>
+		"map <CR> <C-]>
 	"Timestamp beállítások
 		"nmap <leader>ts A<C-R>=strftime(" [%m.%d. %H:%M:%S]")<CR><Esc>
 		"nmap <leader>tl A<C-R>=strftime(" [%Y.%m.%d. %A \| %H:%M:%S]")<CR><Esc>
@@ -223,6 +219,14 @@
 		:highlight Cursor guibg=green guifg=black
 		autocmd InsertEnter * highlight CursorLine guibg=white guifg=black
 		autocmd InsertLeave * highlight CursorLine guibg=red guifg=white
+	" Set the LineNr only for the active buffer/window
+		highlight LineNr guibg=green guifg=black
+		augroup LineNrHighlight
+			autocmd!
+			autocmd WinEnter * set number
+			autocmd WinLeave * set nonumber
+		augroup END
+		highlight StatusLineNC guifg=white guibg=darkgray
 "============================================================================================================
 "~~	|Statusline Settings| ~~
 "============================================================================================================
@@ -472,7 +476,6 @@
 		echo "No session loaded."
 	  endif
 	endfunction
-
 	" Adding automatons for when entering or leaving Vim
 	"au VimEnter * nested :call LoadSession()
 	au VimLeave * :call MakeSession()
@@ -506,13 +509,6 @@
 	" Reload file if it's modified outside
 		set autoread
 		set autowrite
-	"Set Powrshell as default shell
-	"Removed this option, because vimdiff did not work well in powershell
-		"set shell=powershell
-		"set shell=%SystemRoot%\syswow64\WindowsPowerShell\v1.0\powershell.exe
-		"set shellcmdflag=-Command
-	"Source
-		"http://juliankay.com/development/setting-up-vim-to-work-with-powershell/
 "============================================================================================================
 "~~	|NETRW settings| ~~
 "============================================================================================================
@@ -551,25 +547,10 @@
 	map <leader>svc /^.\{38}[FT][MS]\s<cr>	
 	map <F10> :tabnew<cr>
 	map <F12> :tabnew ~\Box Sync\CFSW\CFSW Notes\CFSWTodo.txt<cr>
-	
-
-
-" Set the LineNr only for the active buffer/window
-highlight LineNr guibg=green guifg=black
-augroup LineNrHighlight
-    autocmd!
-	autocmd WinEnter * set number
-    autocmd WinLeave * set nonumber
-augroup END
-highlight StatusLineNC guifg=white guibg=darkgray
-
-
-
-
-
 "============================================================================================================
 "~~ |Changelog| ~~
 "============================================================================================================
+	"2022-02-14 - Re-enabled and consolidated easymotion and sneak prefix with Linux .vimrc, removed unused settings
 	"2019-05-03 - add let g:ctrlp_switch_buffer = 0 to have CtrlP always open in current window, disable Airline, setup new statusline with color highlighting
 	"2019-05-02	- Map Ctrl-b for CtrlPBuffer, map F4 for :b
 	"2019-04-01 - Change CursorLine color in Insert mode

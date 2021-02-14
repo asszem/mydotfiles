@@ -1,0 +1,159 @@
+#####################################################
+###  gitignore  for java folder                   ###
+#####################################################
+/java/**/*.war
+/java/**/*.ear
+/java/**/*.zip
+/java/**/*.tar
+/java/**/*.tar.gz
+/java/**/*.rar
+/java/**/*.class
+/java/**/*.tmp
+/java/**/*.bak
+/java/**/*.swp
+/java/**/*~.nib
+/java/**/*.log
+
+# IDEA specific git ignore
+/java/**/**/.idea
+/java/**/out/
+*.trc
+*.iml
+
+
+
+# Eclipse specific git ignore
+/java/**/*.pydevproject
+/java/**/.metadata
+/java/**/.recommenders
+/java/**/bin/**
+/java/**/tmp/**
+/java/**/tmp/**/*
+/java/**/local.properties
+/java/**/.loadpath
+/java/**/target/
+/java/**/RemoteSystemsTempFiles
+/java/CFSWeb/**/*.class
+/java/**/**/*.classpath
+
+# External tool builders
+/java/**/.externalToolBuilders/
+
+# Gradle specific files/folders
+/java/**/.gradle
+/java/CFSWeb/CFSW/gradle
+/java/**/build/
+
+# Local Repository for Deploy
+/java/CFSWeb/Repository
+
+# Locally stored "Eclipse launch configurations"
+/java/**/*.launch
+
+# IDEA project files
+**/*.iml
+**/*.idea
+/java/**/out/
+/java/**/target/
+/java/**/tmpdest.xml
+/java/**/tmpsrc.xml
+
+
+#####################################################
+###    gitignore  for C folder                    ###
+#####################################################
+
+# Ignore ispf content
+
+/builds/ispf/bin/**
+/builds/ispf/lib/**
+/builds/ispf/build/**
+/builds/ispf/logs/**
+
+##############################################################################
+
+# Ignore crf content
+
+/builds/crf/bin/**
+/builds/crf/lib/**
+/builds/crf/build/**
+/builds/crf/logs/**
+
+##############################################################################
+
+# Ignore wscapi content
+
+/builds/wscapi/bin/**
+/builds/wscapi/build/**
+/builds/wscapi/lib/**
+/builds/wscapi/logs/**
+/builds/wscapi/settings/ispsnewc.bnd
+
+##############################################################################
+
+/builds/sap/logs/**
+/builds/sap/lib/**
+/builds/sap/build/**
+/builds/sap/bin/**
+
+##############################################################################
+
+# Explicit ignore from settings files
+
+
+##############################################################################
+
+# settings ignore from SAP
+
+/builds/sap/settings/dispatcher_db2.bnd
+/builds/sap/settings/ismcache_db2.bnd
+/builds/sap/settings/liccodes.ini
+/builds/sap/settings/pgmoemap.ini
+/builds/sap/settings/sot.ini
+/builds/sap/settings/wsccmds.gml
+/builds/sap/settings/wsckeys.gml
+/builds/sap/settings/wsc.names
+/builds/sap/settings/wscpgm.explode
+/builds/sap/settings/wscrep.names
+/builds/sap/settings/wscxmsg.gml
+/builds/sap/settings/zgrytrls.ini
+
+##############################################################################
+
+#settings ignore from wscapi
+
+/builds/wscapi/settings/ispsnewc.bnd
+
+##############################################################################
+
+#additional ignore files
+
+/builds/bin/makepw
+/builds/bin/showpw
+/builds/bin/terse
+/builds/bin/fromenv
+/builds/tools/makepw/bin/
+/builds/tools/makepw/logs/
+/builds/tools/makepw/obj/
+/builds/tools/showpw/bin/
+/builds/tools/showpw/logs/
+/builds/tools/showpw/obj/
+/builds/tools/terse/bin/
+/builds/tools/terse/logs/
+/builds/tools/terse/obj/
+
+
+##############################################################################
+
+# Ignore NetBeans files
+
+/builds/**/nbproject/
+
+##############################################################################
+
+# greenscreen related
+/builds/sap/tmp
+/builds/sap/trace.log
+/builds/sap/settings/trace.ini
+/builds/sap/settings/cfsw.conf
+##############################################################################

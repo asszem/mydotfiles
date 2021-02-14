@@ -1,9 +1,4 @@
 {
-  "**/*.jsmap": true,
-  "**/*.js": {
-    "when": "$(basename).ts"
-  },
-  "prettier.singleQuote": true,
   "editor.wordWrap": "on",
   "vim.hlsearch": true,
   "vim.leader": ",",
@@ -82,14 +77,33 @@
   "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
   "window.menuBarVisibility": "default",
   "editor.renderControlCharacters": true,
-  "window.zoomLevel": 0,
+  "window.zoomLevel": -1,
   "workbench.activityBar.visible": true,
   "editor.multiCursorModifier": "alt",
   "workbench.iconTheme": "vscode-icons",
   "vsicons.projectDetection.autoReload": true,
   "vim.foldfix": true,
-  "prettier.eslintIntegration": true,
+  "prettier.singleQuote": true,
+  "typescript.preferences.quoteStyle": "single",
+  "javascript.preferences.quoteStyle": "single",
+  "vim.statusBarColorControl": true,
+  "workbench.colorCustomizations": {
+    "statusBar.background": "#005f5f",
+    "statusBar.noFolderBackground": "#005f5f",
+    "statusBar.debuggingBackground": "#005f5f"
+  },
+  "workbench.statusBar.feedback.visible": false,
   "breadcrumbs.enabled": true,
+  "scm.alwaysShowProviders": true,
+  "vsicons.dontShowNewVersionMessage": true,
+  "git.confirmSync": false,
+  "terminal.integrated.fontSize": 18,
   "terminal.integrated.rendererType": "dom",
-  "javascript.updateImportsOnFileMove.enabled": "always"
+  "editor.fontSize": 18,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
