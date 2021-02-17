@@ -1,4 +1,4 @@
-"Last updated: 2021-02-14
+"Last updated: 2021-02-17
 "============================================================================================================
 "~~	|Diff Settings| ~~
 "============================================================================================================
@@ -297,6 +297,20 @@
 		set scrolloff=5
 		set sidescroll=1
 		set sidescrolloff=10
+	"" Zoom / Restore window.
+		function! s:ZoomToggle() abort
+			if exists('t:zoomed') && t:zoomed
+				execute t:zoom_winrestcmd
+				let t:zoomed = 0
+			else
+				let t:zoom_winrestcmd = winrestcmd()
+				resize
+				vertical resize
+				let t:zoomed = 1
+			endif
+		endfunction
+		command! ZoomToggle call s:ZoomToggle()
+		nnoremap <leader>z :ZoomToggle<CR>
 "============================================================================================================
 "~~	|Cursor Movement and Edit Mappings| ~~
 "============================================================================================================
@@ -511,6 +525,7 @@
 "============================================================================================================
 "~~ |Changelog| ~~
 "============================================================================================================
+	"2021-02-17 - Added ZoomToggle function and mapped to leader z
 	"2021-02-14 - Consolidate sneak and easymotion keys with Windows version
 	"2017-07-15 - Add cursor color and shape settings for xterm mode (not for gvim)
 	"2018-07-01 - Update Airline tabline (display tab number, hide buffer number) and status line (display full file path), add Sneak plugin

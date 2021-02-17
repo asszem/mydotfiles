@@ -1,4 +1,4 @@
-"Last updated: 2021-02-14
+"Last updated: 2021-02-17
 "============================================================================================================
 "~~	|Diff Settings| ~~
 "============================================================================================================
@@ -429,6 +429,20 @@
 	"Az új split mindig jobbra és lent nyíljon.
 		set splitright
 		set splitbelow
+		"" Zoom / Restore window.
+		function! s:ZoomToggle() abort
+			if exists('t:zoomed') && t:zoomed
+				execute t:zoom_winrestcmd
+				let t:zoomed = 0
+			else
+				let t:zoom_winrestcmd = winrestcmd()
+				resize
+				vertical resize
+				let t:zoomed = 1
+			endif
+		endfunction
+		command! ZoomToggle call s:ZoomToggle()
+		nnoremap <leader>z :ZoomToggle<CR>
 "============================================================================================================
 "~~	|Function Key Mappings| ~~
 "============================================================================================================
@@ -550,7 +564,8 @@
 "============================================================================================================
 "~~ |Changelog| ~~
 "============================================================================================================
-	"2022-02-14 - Re-enabled and consolidated easymotion and sneak prefix with Linux .vimrc, removed unused settings
+	"2021-02-17 - Added ZoomToggle function and mapped to leader z
+	"2021-02-14 - Re-enabled and consolidated easymotion and sneak prefix with Linux .vimrc, removed unused settings
 	"2019-05-03 - add let g:ctrlp_switch_buffer = 0 to have CtrlP always open in current window, disable Airline, setup new statusline with color highlighting
 	"2019-05-02	- Map Ctrl-b for CtrlPBuffer, map F4 for :b
 	"2019-04-01 - Change CursorLine color in Insert mode
