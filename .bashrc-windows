@@ -24,6 +24,7 @@ alias kh="ll -lath | head"
 alias d="winpty docker"
 alias dps="docker ps -a"
 alias dls="docker image ls"
+alias tmux="tmux -f ~/.tmuxrc"
 
 source ~/goto/goto.bash
 
