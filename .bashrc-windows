@@ -3,7 +3,7 @@
 #http://blog.albertarmea.com/post/115102365718/using-gvim-from-git-bash
 
 
-alias vim='/c/Program\ Files\ \(x86\)/Vim/vim82/gvim.exe'
+#alias vim='/c/Program\ Files\ \(x86\)/Vim/vim82/gvim.exe'
 #alias gvimdiff='/c/Program\ Files\ \(x86\)/Vim/vim82/gvim.exe -d'
 
 alias cd..="cd .."
@@ -29,7 +29,7 @@ alias dps="docker ps -a"
 alias dls="docker image ls"
 alias tmux="tmux -f ~/.tmuxrc"
 
-source ~/goto/goto.bash
+source ~/goto/goto.sh
 
 #  SETUP CONSTANTS
 #Source:
@@ -161,10 +161,10 @@ unset TMP
 unset TEMP
 
 
-set -o vi
+#set -o vi
 
 # to be able to i-search in bash history with Ctrl-S
-set stty -ixon
+#set stty -ixon
   
 
 

@@ -1,4 +1,4 @@
-"Last updated: 2021-02-17
+"Last updated: 2023-01-09 - mapped C-L to open CtrlPLine for fuzy line search
 "============================================================================================================
 "~~	|Diff Settings| ~~
 "============================================================================================================
@@ -102,6 +102,7 @@
 		let g:ctrlp_cmd = 'CtrlPMRU'
 		"Open CtrlP in Buffer mode
 		map <c-b> :CtrlPBuffer<cr>
+		map <c-l> :CtrlPLine<cr>
 		"http://ctrlpvim.github.io/ctrlp.vim/#installation"
 		"Make CtrlP open in the same buffer
 		let g:ctrlp_switch_buffer = '0'
@@ -396,8 +397,8 @@
 "~~	|Tab and Window Settings| ~~
 "============================================================================================================
 	"Tabkezeléshez tabváltás balra-jobbra CTRL H és L gombokkal, illetve "CTRL balra és jobbra nyilakkal
-		noremap <C-l> gt
-		noremap <C-h> gT
+		"noremap <C-l> gt
+		"noremap <C-h> gT
 		nnoremap <C-left> gT
 		nnoremap <C-right> gt
 	"Windowskezelés, normál módban kurzor billentyűk az ablakok között váltogatnak

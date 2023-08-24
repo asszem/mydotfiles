@@ -1,55 +1,56 @@
-# Version 1.1 - just the bare minimum
-# panes
-set -g pane-border-style 'fg=green'
-set -g pane-active-border-style 'fg=red bg=red'
+# Version 1.0
+# source .tmux.conf as suggested in `man tmux` - reload source by prefix+R or Ctrl+Alt+R
+bind r source-file ~/.tmuxrc \; display ​" Reloaded .tmuxrc"
+#set -g default-terminal "xterm-256color"
+
 # Remap pane/window splitting to use current pane path
 bind '%' split-window -h -c "#{pane_current_path}"
 bind '"' split-window -c "#{pane_current_path}"
 bind c new-window -c "#{pane_current_path}"
-# source .tmux.conf as suggested in `man tmux` - reload source by prefix+R or Ctrl+Alt+R
-bind r source-file ~/.tmuxrc \; display ​" Reloaded .tmuxrc"
-set -g default-terminal "xterm-256color"
-
 
 # enable mouse
 #setw -g mouse on
 # Setup Ctrl-M-Ctrl-m to get status
 #bind-key C-m set -g mouse \; display-message 'Mouse #{?mouse,on,off}'
 
+# panes
+set -g pane-border-style 'fg=green'
+set -g pane-active-border-style 'fg=red bg=red'
+
 #set-window-option -g mode-keys vi
 
 # to prevent ssh from renaming window name
-#set-option -g allow-rename off
+set-option -g allow-rename off
 
 # address vim mode switching delay (http://superuser.com/a/252717/65504)
-#set -s escape-time 0
+set -s escape-time 0
 
 # increase scrollback buffer size
-#set -g history-limit 50000
+set -g history-limit 50000
 
 # tmux messages are displayed for 2 seconds
-#set -g display-time 20000
+set -g display-time 20000
 
 # refresh 'status-left' and 'status-right' more often
-#set -g status-interval 5
+set -g status-interval 5
 
 # focus events enabled for terminals that support them
-#set -g focus-events on
+set -g focus-events on
 
 # super useful when using "grouped sessions" and multi-monitor setup
-#setw -g aggressive-resize on
+setw -g aggressive-resize on
 
 # Set parent terminal title to reflect current window in tmux session 
-#set -g set-titles on
-#set -g set-titles-string "#I:#W [#P:#{pane_current_command}]"
+set -g set-titles on
+set -g set-titles-string "#I:#W [#P:#{pane_current_command}]"
 
 # messages
-#set -g message-style 'fg=colour237 bg=colour3 bold'
+set -g message-style 'fg=colour237 bg=colour3 bold'
 
 # modes
-##set -g default-terminal "screen-256color"
-#setw -g clock-mode-colour colour5
-#setw -g mode-style 'fg=colour1 bg=colour18 bold'
+#set -g default-terminal "screen-256color"
+setw -g clock-mode-colour colour5
+setw -g mode-style 'fg=colour1 bg=colour18 bold'
 
 #############
 # disabled #
