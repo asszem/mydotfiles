@@ -1,4 +1,5 @@
 #.bashrc for Linux
+export TIME_STYLE=long-iso
 alias cd..="cd .."
 alias ..="cd .."
 alias ...="cd ../../"
@@ -11,7 +12,7 @@ alias p="pushd"
 alias po="popd"
 alias cls="clear"
 alias grep="grep --color=auto"
-alias ls="ls --color=auto"
+alias ls="ls --color=auto -lah"
 alias ll="ls -la"
 alias lt="ll -lath"
 alias lth="ll -lath | head"

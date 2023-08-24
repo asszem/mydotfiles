@@ -1,4 +1,4 @@
-"Last updated: 2021-02-17
+"Last updated: 2023-08-24
 "============================================================================================================
 "~~	|Diff Settings| ~~
 "============================================================================================================
@@ -187,6 +187,8 @@
 	"szúr be (timestamp long UPDATE)
 		"nmap <leader>tlu C<C-R>=strftime("[%Y.%m.%d. %A \| %H:%M:%S]")<CR><Esc>
 	"ToDo listhez 
+	"Add a DONE to the beginning of the line - used for TODO list
+		noremap <leader>d IDONE <esc>
 		" ,d a sor elejét +ra alakítja (DONE)
 		" ,dd a sor elejét !-ra alakítja ("Don'tDone")
 		"nmap <leader>d :s,\(^\s*\)!,\1+,e<cr>:noh<cr>
@@ -230,7 +232,7 @@
 		:highlight statusline ctermbg=black ctermfg=yellow
 		:highlight statuslineNC ctermbg=white ctermfg=darkgrey
 		:highlight DiffText ctermfg=yellow
-		:highlight fileNameColor ctermfg=cyan ctermbg=yellow 
+		:highlight fileNameColor ctermfg=black ctermbg=yellow 
 	"Set status line content
         set statusline=  
         set statusline+=[%.3n]\  		              							" buffer number  
@@ -429,7 +431,7 @@
 	"Buffer kilistázás és belépés választás módba
 		nnoremap <f1> :ls<cr>:b 
 	"Alternatív (előzőleg megnyitott) buferre vált
-		nnoremap <F2> :b#<cr>
+		nnoremap <Backspace> :b#<cr>
 	"Bufferek között vált F4-F3-ra
 		nnoremap <F4> :bnext <CR>
 		nnoremap <F3> :bprevious<CR>
