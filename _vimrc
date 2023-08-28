@@ -1,4 +1,4 @@
-"Last updated: 2023-01-09 - mapped C-L to open CtrlPLine for fuzy line search
+"Last updated: 2023-03-30 - Removed CFSW specific settings, added fileformat set to dos format
 "============================================================================================================
 "~~	|Diff Settings| ~~
 "============================================================================================================
@@ -42,10 +42,11 @@
 "~~	|Vundle Plugin Configurations| ~~
 "============================================================================================================
 	set nocompatible              " be iMproved, require
+	set shellslash
 	filetype off                  " required
 	" set the runtime path to include Vundle and initialize
-	set rtp+=$HOME/.vim/bundle/Vundle.vim/
-	call vundle#begin('$HOME/.vim/bundle/')
+	set rtp+=~/vimfiles/bundle/Vundle.vim/
+	call vundle#begin('~/vimfiles/bundle/')
 	" alternatively, pass a path where Vundle should install plugins
 	"call vundle#begin('~/some/path/here')
 	" let Vundle manage Vundle, required
@@ -263,6 +264,7 @@
 "============================================================================================================
 "~~	|UI settings| ~~
 "============================================================================================================
+        "set lines=999 columns=999
 	"Ha van lehetőség, akkor menüben mutatja meg a TAB utáni autocomplete lehetőségeket
 		set wildmenu 
 	"A wildmode-ban kiírja a lehetőségeket is függőleges menüben
@@ -285,7 +287,7 @@
 	"Kicsit szellősebb sorokat állít be.
 		set linespace=5 
 	"Beállítja, hogy mindig max képernyőn nyíljon meg a VIM
-		"set lines=999 columns=999 
+		set lines=999 columns=999 
 	"Mindig mutasson státuszsort
 		set laststatus=2 
 	"Beállítja, a softtabok értékét 8-re
@@ -518,7 +520,8 @@
 		set autochdir
 		noremap <leader>cdoff :set noautochdir<cr>
 	"To display proper special characters in Airline status
-		set guifont=Droid_Sans_Mono_Slashed_for_Pow:h10:cEASTEUROPE:qDRAFT
+		"set guifont=Droid_Sans_Mono_Slashed_for_Pow:h10:cEASTEUROPE:qDRAFT
+		set guifont=Consolas:h10
 	"Az aktuális fájl mappátját állítja be PWD-nek
 	  	nnoremap <Leader>cd :cd %:h<bar>pwd<cr>
 	" Reload file if it's modified outside
@@ -555,16 +558,12 @@
 	"Ez a helpben fontos, eredetilega  CTRL-G az az aktulis fájl infoit mutatja.
 	noremap <C-g> <C-]>
 	set textwidth=0
-""============================================================================================================
-""~~ |CFSW Specific Settings| ~~
-""============================================================================================================
-	"Find FS/TS or FM/TM that was preceeded by exactly 38 any chars and followed by a whitespace - SVC and MVM flags on RT67, position 40
-	map <leader>svc /^.\{38}[FT][MS]\s<cr>	
-	map <F10> :tabnew<cr>
-	map <F12> :tabnew ~\Box Sync\CFSW\CFSW Notes\CFSWTodo.txt<cr>
+	set fileformats=dos
 "============================================================================================================
 "~~ |Changelog| ~~
 "============================================================================================================
+	"2023-03-30 - Removed CFSW specific settings, added fileformat set to dos format
+	"2023-03-22 - Updated vundle installer setup, added config to start maximized
 	"2021-02-17 - Added ZoomToggle function and mapped to leader z
 	"2021-02-14 - Re-enabled and consolidated easymotion and sneak prefix with Linux .vimrc, removed unused settings
 	"2019-05-03 - add let g:ctrlp_switch_buffer = 0 to have CtrlP always open in current window, disable Airline, setup new statusline with color highlighting
