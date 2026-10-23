@@ -1,0 +1,30 @@
+separator=true
+separator_block_width=15
+
+[wifi]
+command=nmcli -t -f active,ssid dev wifi | grep '^yes' | cut -d: -f2 | sed 's/^/󰤨 /'
+interval=10
+color=#81a1c1
+
+[memory]
+label=󰍛 
+command=free -h | awk '/Mem:/ { print $3 }'
+interval=5
+color=#88c0d0
+
+[cpu_usage]
+label=󰻠 
+command=top -bn1 | grep "Cpu(s)" | sed "s/.*, *\([0-9.]*\)%* id.*/\1/" | awk '{print 100 - $1"%"}'
+interval=5
+color=#a3be8c
+
+[battery]
+command=acpi -b | awk '{print $4}' | tr -d ',' | sed 's/^/󰁹 /'
+interval=30
+color=#ebcb8b
+
+[time]
+label=󰥔 
+command=date '+%Y-%m-%d %H:%M'
+interval=5
+color=#eceff4

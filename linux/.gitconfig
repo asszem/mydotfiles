@@ -4,12 +4,12 @@
 	process = git-lfs filter-process
 	required = true
 [user]
-	name = András
+	name = Asszem
 [user]
 	email = asszem78@gmail.com
 [core]
-	editor = vim 
-	autocrlf = false 
+	editor = vim
+	autocrlf = false
 [alias]
 	last = log -1 HEAD
 	logf = log --pretty=format:\"%h - %an, %ar : %s\"
@@ -26,7 +26,7 @@
 	co = checkout
 [color]
     ui = auto
-  [color "branch"]
+[color "branch"]
     current = yellow reverse
     local = yellow
     remote = green
@@ -40,7 +40,6 @@
 	tool = kdiff3
 [digg]
 	guitool = kdiff3
-
 [merge]
 	tool = vimdiff
 	conflictstyle = diff3
@@ -48,3 +47,5 @@
 	helper = store
 [pull]
 	rebase = false
+[http]
+	version = HTTP/1.1
