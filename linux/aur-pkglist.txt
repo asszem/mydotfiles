@@ -1,0 +1,10 @@
+gtkhash-thunar
+hexchat
+kwin-scripts-tiling
+lib32-libva-vdpau-driver
+libva-vdpau-driver
+manjaro-hotfixes
+pidgin
+reiserfsprogs
+spectre-meltdown-checker
+visual-studio-code-bin

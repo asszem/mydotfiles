@@ -232,3 +232,6 @@ bindsym $mod+c exec --no-startup-id copyq toggle
 
 # Force CopyQ window to open centered and floating in i3
 for_window [class="copyq"] floating enable, resize set 800 500, move position center
+
+# Load xfce4 settings when i3 starts
+exec --no-startup-id xfsettingsd
