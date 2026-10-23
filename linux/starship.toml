@@ -1,0 +1,54 @@
+# Get editor completions and validation
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Insert a blank line between shell prompts
+add_newline = true
+
+# Define prompt structure (adding time at the end of line 1)
+format = """
+$time\
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_status\
+$fill\
+$line_break\
+$character"""
+
+[username]
+show_always = true
+style_user = "bold blue"
+format = "[$user]($style)@"
+
+[hostname]
+ssh_only = false
+style = "bold blue"
+format = "[$hostname]($style) "
+
+# --- Time Module Setup ---
+[time]
+disabled = false
+format = '[\[$time\]]($style) '
+time_format = "%H:%M:%S"
+style = "dimmed white"
+
+# --- Visual Tweaks ---
+[directory]
+style = "bold cyan"
+truncation_length = 0
+truncate_to_repo = false
+
+[git_branch]
+symbol = " "
+style = "bold yellow"
+
+[git_status]
+style = "bold red"
+
+[fill]
+symbol = " "
+
+[character]
+success_symbol = "[❯](bold green)"
+error_symbol = "[❯](bold red)"
