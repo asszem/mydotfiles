@@ -19,7 +19,7 @@ interval=5
 color=#a3be8c
 
 [battery]
-command=acpi -b | awk '{print $4}' | tr -d ',' | sed 's/^/󰁹 /'
+command=acpi -b | awk -F'[:, ]+' '{printf "%s: %s %s  ", $2, $4, $5}'
 interval=30
 color=#ebcb8b
 

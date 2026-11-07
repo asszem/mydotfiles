@@ -1,0 +1,20 @@
+[mgr]
+show_hidden = true
+
+[open]
+prepend_rules = [
+    { url = "inode/directory", use = "folder" },
+	{ mime = "image/*", use = "image" },
+    { url = "*", use = "edit" }
+]
+
+[opener]
+folder = [
+    { run = 'enter', desc = "Enter directory" }
+]
+edit = [
+    { run = 'vim %s', block = true, for = "unix" }
+]
+image = [
+    { run = 'feh "$@"', desc = "Open image", for = "unix" }
+]

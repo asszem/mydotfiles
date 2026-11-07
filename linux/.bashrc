@@ -43,13 +43,30 @@ shopt -s expand_aliases
 # to be able to i-search in bash history with Ctrl-S
 set stty -ixon
 
-# Source goto
-[[ -s "/usr/local/share/goto.sh" ]] && source /usr/local/share/goto.sh
-# Use fzf to replace ctrl-r/ctrl-s for command line history searchk
-source <(fzf --bash)
-
 # For NPM
 export PATH="$HOME/.npm-global/bin:$PATH"
 
+# Source goto
+[[ -s "/usr/local/share/goto.sh" ]] && source /usr/local/share/goto.sh
+
+# Use fzf to replace ctrl-r/ctrl-s for command line history searchk
+source <(fzf --bash)
+
+# Zoxide to replace CD, similar to fzf fuzzy search
+# Start with z foldername
+# eval "$(zoxide init bash)"
+# Handle CD commands automatically
+eval "$(zoxide init --cmd cd bash)"
+
 # Set Starship as prompt, use ~/.config/starship.toml to configure
 eval "$(starship init bash)"
+
+# Make Yazi file manager quit to the folder where it was navigated to
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}

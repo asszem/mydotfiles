@@ -235,3 +235,6 @@ for_window [class="copyq"] floating enable, resize set 800 500, move position ce
 
 # Load xfce4 settings when i3 starts
 exec --no-startup-id xfsettingsd
+
+# Use Flameshot for region selection, annotation, copy, and save
+bindsym Print exec --no-startup-id flameshot gui
